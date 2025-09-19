@@ -579,3 +579,46 @@ body {
 .header-inner {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)) !important;
 }
+/* ==================== */
+/* УБИРАЕМ ФИКСАЦИЮ ШАПКИ */
+/* ==================== */
+
+/* Возвращаем исходное поведение шапки */
+header {
+    position: sticky !important;
+    top: 12px !important;
+    z-index: 60 !important;
+    padding: 12px 0 !important;
+    width: auto !important;
+    left: auto !important;
+    right: auto !important;
+    background: transparent !important;
+}
+
+/* Возвращаем оригинальные отступы */
+main {
+    padding-top: 0 !important;
+}
+
+/* Возвращаем оригинальный стиль контейнера */
+.header-inner {
+    margin: 1 auto !important;
+    max-width: 1180px !important;
+    border-radius: 999px !important;
+    padding: 32px 16px !important;
+    background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35)) !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 6px 20px rgba(90,61,92,0.06) !important;
+}
+
+/* Убираем все fixed стили */
+body > header {
+    all: unset !important;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 990px) {
+    .header-inner {
+        border-radius: 999px !important;
+    }
+}
