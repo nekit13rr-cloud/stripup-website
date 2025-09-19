@@ -1,0 +1,89 @@
+/* Fullscreen animated gradient / subtle movement */
+.full-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,190,170,0.45), transparent 10%),
+              radial-gradient(800px 400px at 90% 90%, rgba(255,160,185,0.35), transparent 10%),
+              linear-gradient(135deg, #fff0e8 0%, #ffe6f0 40%, #fffaf6 100%);
+  animation: bgShift 12s ease-in-out infinite alternate;
+  filter: saturate(1.06);
+}
+@keyframes bgShift {
+  from { transform: translateY(-12px) rotate(-1deg) scale(1.01); }
+  to   { transform: translateY(12px) rotate(1deg) scale(1); }
+}
+
+/* Animated gradient background */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -12;
+  background: linear-gradient(-45deg, #ffd1dc, #ffdcbf, #ffefd5, #e6f0ff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  opacity: 0.5;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header animation */
+@keyframes headerSlide {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.header-inner {
+  animation: headerSlide 0.5s ease-out;
+}
+
+/* Hero animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Kicker animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,77,141,0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255,77,141,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,77,141,0); }
+}
+
+.kicker {
+  animation: pulse 2s infinite;
+}
+
+/* Floating animation for anime figure */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.anime-figure {
+  animation: float 6s ease-in-out infinite;
+}
+.anime-figure:hover{transform:translateY(-8px) rotate(-1deg)}
+
+/* Typewriter animations */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent); }
+}

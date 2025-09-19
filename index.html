@@ -1,129 +1,346 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StripUp - Вебкам Студия</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StripUp — Аниме Студия</title>
+  <meta name="description" content="StripUp — уютная аниме-студия. Работа из дома, обучение, анонимность и высокий доход." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="StripUp — Аниме  Студия" />
+  <meta property="og:description" content="Join our pastel anime community — учимся, работаем, зарабатываем в комфортной атмосфере." />
+  <link rel="icon" href="https://i.ibb.co/8mYxg2H/sakura-favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS файлы -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-  <!-- Header -->
+  <div class="animated-bg"></div>
+  <div class="full-bg"></div>
+  <canvas id="petalCanvas"></canvas>
+  <div class="particles-container" id="particlesContainer"></div>
+
   <header>
-    <div class="container header-content">
-      <a href="#" class="logo"><i class="fas fa-crown"></i> StripUp</a>
-      <nav class="nav-links">
-        <a href="#about">О нас</a>
-        <a href="#benefits">Преимущества</a>
-        <a href="#tariffs">Тарифы</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-      <a href="https://t.me/stripup_support" class="header-btn">В Telegram</a>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo" id="logoLink"><i>🌸</i>StripUp</a>
+
+        <nav>
+          <a href="#hero">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#tariffs">Тарифы</a>
+          <a href="#benefits">Преимущества</a>
+          <a href="#testimonials">Отзывы</a>
+        </nav>
+          <a href="https://t.me/sakuradreams_support" class="cta-telegram">Написать в Telegram</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Начни зарабатывать в вебкаме уже сегодня</h1>
-      <p>StripUp — современная студия, которая помогает моделям раскрыть потенциал и получать высокий доход.</p>
-      <div class="hero-buttons">
-        <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Связаться</a>
-        <a href="#tariffs" class="btn btn-transparent">Выбрать тариф</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container hero-container">
+        <div class="hero-left" role="region" aria-labelledby="heroTitle">
+          <span class="kicker">Присоединяйся</span>
+          <h1 id="heroTitle">Раскрой свой аниме-потенциал и начни зарабатывать в уютной атмосфере</h1>
+          <p>Работа из дома, поддержка, анонимность и обучение — всё в тёплой розово-персиковой студии StripUp.</p>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container about-content">
-      <div class="about-text">
-        <h2 class="section-title">О нас</h2>
-        <p>Мы предоставляем комфортные условия для работы, обучение и круглосуточную поддержку.</p>
-        <p>Наша цель — сделать вебкам простым, безопасным и прибыльным для каждой модели.</p>
-      </div>
-    </div>
-  </section>
+          <div class="hero-ctas">
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary"><span class="sparkle">💟</span> Написать в Telegram</a>
+            <a href="#tariffs" class="btn btn-ghost">Выбрать тариф</a>
+          </div>
 
-  <!-- Benefits -->
-  <section id="benefits">
-    <div class="container">
-      <h2 class="section-title">Почему выбирают нас?</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <i class="fas fa-headset benefit-icon"></i>
-          <h3>Поддержка 24/7</h3>
-          <p>Мы всегда рядом, чтобы помочь.</p>
-        </div>
-        <div class="benefit-card">
-          <i class="fas fa-chart-line benefit-icon"></i>
-          <h3>Высокий доход</h3>
-          <p>Средний заработок моделей — 120 000 ₽.</p>
-        </div>
-        <div class="benefit-card">
-          <i class="fas fa-shield-alt benefit-icon"></i>
-          <h3>Безопасность</h3>
-          <p>Ваши данные и конфиденциальность под защитой.</p>
+        <div class="hero-right">
+          <!-- Anime figure (external PNG link — заменяем при необходимости) -->
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Tariffs -->
-  <section id="tariffs">
-    <div class="container">
-      <h2 class="section-title">Наши тарифы</h2>
-      <div class="tariffs-grid">
-        <div class="tariff-card">
-          <h3>Базовый</h3>
-          <p class="tariff-percent">70%</p>
-          <p>Обучение и поддержка</p>
-        </div>
-        <div class="tariff-card popular">
-          <h3>Премиум</h3>
-          <p class="tariff-percent">80%</p>
-          <p>Дополнительное продвижение</p>
-        </div>
-        <div class="tariff-card">
-          <h3>VIP</h3>
-          <p class="tariff-percent">90%</p>
-          <p>Полный пакет услуг</p>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">О студии</h2>
+        <p class="section-sub">Комфорт, анонимность и забота — наша приоритетная миссия.</p>
+
+        <div class="grid about-grid">
+          <div>
+            <div class="card" style="margin-bottom:14px">
+              <h3>Мы рядом и заботимся</h3>
+              <p>StripUp — это безопасное пространство, обучение, персональная поддержка и гибкий график для девушек, которые хотят работать из дома.</p>
+            </div>
+
+            <div class="card">
+              <h4>Безопасность и анонимность</h4>
+              <p>Мы помогаем с приватностью, учим как защитить контент и обеспечиваем техническую поддержку 24/7.</p>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img src="https://i.ibb.co/6nLfq0V/anime-group.png" alt="Аниме группа" class="hover-effect">
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section id="contacts" class="cta">
-    <h2>Готова начать?</h2>
-    <p>Пиши нам прямо сейчас и стань частью команды StripUp.</p>
-    <a href="https://t.me/stripup_support" class="btn btn-telegram"><i class="fab fa-telegram"></i> Написать</a>
-  </section>
+    <!-- BENEFITS -->
+    <section id="benefits">
+      <div class="container">
+        <h2 class="section-title">Преимущества</h2>
+        <p class="section-sub">Мягкая поддержка, обучение и высокий доход в уютной студии.</p>
 
-  <!-- Footer -->
+        <div class="grid benefits-grid">
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h4>Работа из дома</h4>
+            <p>Не нужно арендовать студию — всё можно делать из уютной комнаты.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h4>Гибкий график</h4>
+            <p>Самостоятельно планируй свои стримы и отдых.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-user-secret"></i>
+            </div>
+            <h4>Анонимность</h4>
+            <p>Помогаем настроить приватность и защищаем данные.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>Обучение</h4>
+            <p>Бесплатные курсы и персональный коуч.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFFS -->
+    <section id="tariffs">
+      <div class="container">
+        <h2 class="section-title">Тарифы</h2>
+        <p class="section-sub">Выбери подходящий пакет — от самостоятельного до с личным оператором.</p>
+
+        <div class="grid tariffs-grid">
+          <div class="card tariff">
+            <h3>ВСЁ САМА</h3>
+            <div class="price">20%</div>
+            <p>Для опытных моделей, которые всё делают самостоятельно.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Техподдержка 24/7</li>
+              <li><i class="fas fa-check-circle"></i> Базовый анализ</li>
+            </ul>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary">Выбрать</a>
+          </div>
+
+          <div class="card tariff popular">
+            <h3>КОУЧ ПЛЮС</h3>
+            <div class="price">30%</div>
+            <p>Оптимальный: коучинг + аналитика.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Персональный коуч</li>
+              <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
+            </ul>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary">Выбрать</a>
+          </div>
+
+          <div class="card tariff">
+            <h3>ЛИЧНЫЙ ОПЕРАТОР</h3>
+            <div class="price">40%</div>
+            <p>Максимальная поддержка: оператор и стратегия.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Персональный менеджер</li>
+              <li><i class="fas fa-check-circle"></i> Индивидуальная стратегия</li>
+              <li><i class="fas fa-check-circle"></i> Максимальная поддержка</li>
+            </ul>
+            <a href="https://t.me/sakuradreams_support" class="btn btn-primary">Выбрать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section class="card calculator-section" id="calculator">
+      <div class="container">
+        <h2 class="section-title">Калькулятор дохода</h2>
+        <p class="section-sub">Рассчитай потенциальный недельный доход после комиссии.</p>
+
+        <div class="calculator-inputs">
+          <label>
+            <div class="input-label">Часов в неделю</div>
+            <input id="hours" type="number" min="0" value="20" />
+          </label>
+
+          <label>
+            <div class="input-label">Ожидаемый часовой заработок (₽)</div>
+            <input id="hourlyRate" type="number" min="0" value="2000" />
+          </label>
+
+          <label>
+            <div class="input-label">Тариф</div>
+            <select id="tariff">
+              <option value="0.2">Всё сама (20%)</option>
+              <option value="0.3" selected>Коуч плюс (30%)</option>
+              <option value="0.4">Личный оператор (40%)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="calculator-result">
+          <div>Ваш доход в неделю после комиссии</div>
+          <div id="result">0 ₽</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Отзывы</h2>
+        <p class="section-sub">Что говорят модели</p>
+
+        <div class="testimonials-wrap">
+          <div class="testimonials" id="testimonialsInner">
+            <div class="testimonial card">
+              <div class="testimonial-header">
+                <img src="https://i.ibb.co/7QZq3z7/avatar1.png" alt="Аватар">
+                <div>
+                  <div class="testimonial-name">Алиса, 21</div>
+                  <div class="testimonial-info">Работает 6 месяцев</div>
+                </div>
+              </div>
+              <div class="testimonial-text">"Работаю с StripUp уже полгода. Поддержка всегда на связи, доход растёт."</div>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="testimonial card">
+              <div class="testimonial-header">
+                <img src="https://i.ibb.co/6RJ0Hc0/avatar2.png" alt="Аватар 2">
+                <div>
+                  <div class="testimonial-name">Карин, 23</div>
+                  <div class="testimonial-info">Работает 1 год</div>
+                </div>
+              </div>
+              <div class="testimonial-text">"Чувствую себя защищённой — многое объясняют и помогают с приватностью."</div>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="testimonial card">
+              <div class="testimonial-header">
+                <img src="https://i.ibb.co/0jW90Z0/avatar3.png" alt="Аватар 3">
+                <div>
+                  <div class="testimonial-name">Виктория, 22</div>
+                  <div class="testimonial-info">Работает 3 месяца</div>
+                </div>
+              </div>
+              <div class="testimonial-text">"С оператором работать легко — он решает техвопросы, я лишь стримлю."</div>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonials-controls">
+            <button id="prevTest" class="btn btn-ghost"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextTest" class="btn btn-ghost"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Вопросы и ответы</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-q">Как проходит обучение?<span>+</span></div>
+            <div class="faq-a">Обучение онлайн: техника, безопасность, поведенческие рекомендации и стратегии роста.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Как платят?<span>+</span></div>
+            <div class="faq-a">Выплаты: первый месяц еженедельно, далее два раза в месяц. Поддерживаем прозрачную статистику.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Нужен ли опыт?<span>+</span></div>
+            <div class="faq-a">Опыт не требуется — мы обучаем с нуля и помогаем на всех этапах становления.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Какое оборудование нужно?<span>+</span></div>
+            <div class="faq-a">Достаточно современного смартфона или ноутбука с камерой. Поможем с настройкой.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="card cta-card">
+          <div class="cta-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h2>Готовы начать?</h2>
+          <p>Присоединяйся к нашему тёплому аниме-сообществу и начни зарабатывать уже сегодня.</p>
+          <a href="https://t.me/sakuradreams_support" class="btn btn-primary">Присоединиться</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <div class="container footer-content">
-      <div class="footer-column">
-        <h3>StripUp</h3>
-        <p>Современная вебкам-студия</p>
-      </div>
-      <div class="footer-column">
-        <h3>Навигация</h3>
-        <ul class="footer-links">
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#benefits">Преимущества</a></li>
-          <li><a href="#tariffs">Тарифы</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Контакты</h3>
-        <p><i class="fab fa-telegram"></i> @stripup_support</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">StripUp</div>
+        <div class="footer-copyright">© 2023 StripUp. Все права защищены.</div>
+        <div class="socials">
+          <a href="https://t.me/sakuradreams_support"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-vk"></i></a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">© 2025 StripUp. Все права защищены.</div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- floating telegram -->
+  <a class="float-telegram" href="https://t.me/sakuradreams_support"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+
+  <!-- JavaScript файлы -->
+  <script src="js/animations.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
