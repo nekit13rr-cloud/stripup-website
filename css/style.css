@@ -622,3 +622,114 @@ body > header {
         border-radius: 999px !important;
     }
 }
+/* ==================== */
+/* ИСПРАВЛЕНИЕ ШАПКИ ДЛЯ МОБИЛЬНЫХ */
+/* ==================== */
+
+@media (max-width: 990px) {
+    /* Исправляем шапку для мобильных */
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        padding: 8px 0 !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        z-index: 1000 !important;
+    }
+    
+    .header-inner {
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding: 15px !important;
+        border-radius: 20px !important;
+        width: 95% !important;
+        margin: 0 auto !important;
+        background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8)) !important;
+    }
+    
+    /* Логотип по центру */
+    .logo {
+        order: 1 !important;
+        font-size: 24px !important;
+        justify-content: center !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Навигация вторым элементом */
+    nav {
+        order: 2 !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+    
+    nav a {
+        padding: 6px 10px !important;
+        font-size: 14px !important;
+        text-align: center !important;
+        flex: 1 !important;
+        min-width: 80px !important;
+    }
+    
+    /* Кнопка Telegram третьим элементом */
+    .cta-telegram {
+        order: 3 !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+    
+    /* Уменьшаем отступы основного контента */
+    main {
+        padding-top: 20px !important;
+    }
+}
+
+/* Дополнительные исправления для очень маленьких экранов */
+@media (max-width: 480px) {
+    .header-inner {
+        padding: 12px !important;
+        gap: 10px !important;
+        border-radius: 15px !important;
+    }
+    
+    .logo {
+        font-size: 22px !important;
+    }
+    
+    nav {
+        gap: 5px !important;
+    }
+    
+    nav a {
+        padding: 5px 8px !important;
+        font-size: 13px !important;
+        min-width: 70px !important;
+    }
+    
+    .cta-telegram {
+        padding: 8px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Убираем анимацию float для мобильных */
+    .anime-figure {
+        animation: none !important;
+    }
+}
+
+/* Исправляем горизонтальную прокрутку */
+@media (max-width: 990px) {
+    body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    
+    .container {
+        padding: 0 15px !important;
+    }
+}
