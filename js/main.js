@@ -186,3 +186,79 @@ document.addEventListener('DOMContentLoaded', function() {
   initCardHoverEffects();
   initLogoScroll();
 });
+// Анимация чисел в статистике
+function animateCounter() {
+  const counters = document.querySelectorAll('.stat-number');
+  
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-count'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.textContent = target;
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current);
+      }
+    }, 16);
+  });
+}
+
+// Анимация появления элементов при скролле
+function animateOnScroll() {
+  const heroElements = document.querySelectorAll('.hero-left > *');
+  
+  heroElements.forEach((element, index) => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = `all 0.6s ease ${index * 0.2}s`;
+  });
+  
+  setTimeout(() => {
+    heroElements.forEach(element => {
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    });
+  }, 100);
+}
+
+// Параллакс эффект для аниме-девушки
+function initParallax() {
+  const animeGirl = document.querySelector('.anime-girl');
+  
+  window.addEventListener('mousemove', (e) => {
+    const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+    const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+    
+    animeGirl.style.transform = `perspective(1000px) rotateY(${moveX}deg) rotateX(${-moveY}deg) translateZ(10px)`;
+  });
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  animateOnScroll();
+  animateCounter();
+  initParallax();
+  
+  // Анимация появления при скролле
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.hero-left > *').forEach(el => observer.observe(el));
+});
+
+// Плавная прокрутка для кнопки "Выбрать тариф"
+document.querySelector('.btn-ghost').addEventListener('click', function(e) {
+  e.preventDefault();
+  const target = document.querySelector(this.getAttribute('href'));
+  target.scrollIntoView({ behavior: 'smooth' });
+});
