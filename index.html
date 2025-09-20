@@ -40,7 +40,6 @@
           <a href="https://t.me/sakuradreams_support" class="cta-telegram">Написать в Telegram</a>
         </div>
       </div>
-    </div>
   </header>
 
   <main>
@@ -64,14 +63,15 @@
     </div>
 
     <div class="hero-right">
-      <div class="anime-girl-wrapper">
-        <img src="https://i.ibb.co/7QZq3z7/avatar1.png" alt="Аниме девушка" class="anime-girl">
-        <div class="floating-heart">💖</div>
+      <div class="anime-girl-with-banner">
+        <div class="banner-content">
+          <div class="banner-arrow"></div>
+        </div>
+        <img src="https://i.imgur.com/QEcbznz.png" alt="Аниме девушка" class="anime-girl-banner">
       </div>
     </div>
   </div>
 </section>
-
     <!-- BENEFITS -->
     <section id="benefits">
       <div class="container">
@@ -155,110 +155,60 @@
       </div>
     </section>
 
-    <!-- CALCULATOR -->
-    <section class="card calculator-section" id="calculator">
-      <div class="container">
-        <h2 class="section-title">Калькулятор дохода</h2>
-        <p class="section-sub">Рассчитай потенциальный недельный доход после комиссии.</p>
+<!-- CALCULATOR -->
+<section class="calculator-section" id="calculator">
+  <div class="container">
+    <h2 class="section-title">Калькулятор дохода</h2>
+    <p class="section-sub">Рассчитай потенциальный недельный доход после комиссии.</p>
 
-        <div class="calculator-inputs">
-          <label>
-            <div class="input-label">Часов в неделю</div>
-            <input id="hours" type="number" min="0" value="20" />
-          </label>
-
-          <label>
-            <div class="input-label">Ожидаемый часовой заработок (₽)</div>
-            <input id="hourlyRate" type="number" min="0" value="2000" />
-          </label>
-
-          <label>
-            <div class="input-label">Тариф</div>
-            <select id="tariff">
-              <option value="0.2">Всё сама (20%)</option>
-              <option value="0.3" selected>Коуч плюс (30%)</option>
-              <option value="0.4">Личный оператор (40%)</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="calculator-result">
-          <div>Ваш доход в неделю после комиссии</div>
-          <div id="result">0 ₽</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <div class="container">
-        <h2 class="section-title">Отзывы</h2>
-        <p class="section-sub">Что говорят модели</p>
-
-        <div class="testimonials-wrap">
-          <div class="testimonials" id="testimonialsInner">
-            <div class="testimonial card">
-              <div class="testimonial-header">
-                <img src="https://i.ibb.co/7QZq3z7/avatar1.png" alt="Аватар">
-                <div>
-                  <div class="testimonial-name">Алиса, 21</div>
-                  <div class="testimonial-info">Работает 6 месяцев</div>
-                </div>
-              </div>
-              <div class="testimonial-text">"Работаю с StripUp уже полгода. Поддержка всегда на связи, доход растёт."</div>
-              <div class="testimonial-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+    <div class="calculator-wrapper reverse">
+      <!-- Левая часть с калькулятором -->
+      <div class="calculator-content">
+        <div class="calculator-card">
+          <div class="calculator-controls">
+            <div class="control-group">
+              <label class="control-label">Часов в неделю</label>
+              <div class="input-with-buttons">
+                <button class="calc-btn minus" data-target="hours">-</button>
+                <input id="hours" type="number" min="0" max="100" value="20" class="calc-input">
+                <button class="calc-btn plus" data-target="hours">+</button>
               </div>
             </div>
-
-            <div class="testimonial card">
-              <div class="testimonial-header">
-                <img src="https://i.ibb.co/6RJ0Hc0/avatar2.png" alt="Аватар 2">
-                <div>
-                  <div class="testimonial-name">Карин, 23</div>
-                  <div class="testimonial-info">Работает 1 год</div>
-                </div>
-              </div>
-              <div class="testimonial-text">"Чувствую себя защищённой — многое объясняют и помогают с приватностью."</div>
-              <div class="testimonial-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+            
+            <div class="control-group">
+              <label class="control-label">Часовая ставка (₽)</label>
+              <div class="input-with-buttons">
+                <button class="calc-btn minus" data-target="hourlyRate">-</button>
+                <input id="hourlyRate" type="number" min="0" max="10000" value="2000" class="calc-input">
+                <button class="calc-btn plus" data-target="hourlyRate">+</button>
               </div>
             </div>
-
-            <div class="testimonial card">
-              <div class="testimonial-header">
-                <img src="https://i.ibb.co/0jW90Z0/avatar3.png" alt="Аватар 3">
-                <div>
-                  <div class="testimonial-name">Виктория, 22</div>
-                  <div class="testimonial-info">Работает 3 месяца</div>
-                </div>
-              </div>
-              <div class="testimonial-text">"С оператором работать легко — он решает техвопросы, я лишь стримлю."</div>
-              <div class="testimonial-stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
+            
+            <div class="control-group">
+              <label class="control-label">Тариф</label>
+              <select id="tariff" class="calc-select">
+                <option value="0.2">Всё сама (20%)</option>
+                <option value="0.3" selected>Коуч плюс (30%)</option>
+                <option value="0.4">Личный оператор (40%)</option>
+              </select>
             </div>
           </div>
-
-          <div class="testimonials-controls">
-            <button id="prevTest" class="btn btn-ghost"><i class="fas fa-chevron-left"></i></button>
-            <button id="nextTest" class="btn btn-ghost"><i class="fas fa-chevron-right"></i></button>
+          
+          <div class="calculator-result">
+            <div class="result-label">Ваш доход в неделю</div>
+            <div id="result" class="result-amount">0 ₽</div>
+            <div class="result-note">после вычета комиссии</div>
           </div>
         </div>
       </div>
-    </section>
+      
+      <!-- Правая часть с изображением -->
+      <div class="calculator-image">
+        <img src="https://i.imgur.com/Xsu6eWe.png" alt="Аниме девушка" class="anime-calculator-img">
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- FAQ -->
     <section id="faq">
