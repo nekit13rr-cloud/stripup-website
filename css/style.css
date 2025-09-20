@@ -32,16 +32,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 50px;
-  background: linear-gradient(135deg, rgba(255,182,193,0.85), rgba(255,140,180,0.8));
-  box-shadow: 0 8px 25px rgba(255,182,193,0.3);
-  backdrop-filter: blur(12px);
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 10px 30px; /* можно уменьшить высоту шапки */
+  background-color: rgba(255, 255, 255, 0.1); /* прозрачный фон под контент */
 }
-
 
 .logo {
   display: flex;
@@ -180,7 +173,7 @@ nav {
 
 .hero-left {
   flex: 1;
-  max-width: 800px;
+  max-width: 900px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   border-radius: var(--card-radius);
   padding: 40px;
@@ -193,6 +186,29 @@ nav {
   align-items: center;
   text-align: center;
 }
+.hero-left:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(90, 61, 92, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 900px;
+  background: linear-gradient(180deg, rgba(255, 245, 248, 0.9), rgba(255, 230, 235, 0.8));
+  border-radius: var(--card-radius);
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(90, 61, 92, 0.1);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
 
 
 .hero-subtitle {
@@ -266,29 +282,28 @@ section{padding:70px 0}
 .benefits-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .tariffs-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
-  border-radius:18px; padding:20px; box-shadow:0 12px 30px rgba(90,61,92,0.06); backdrop-filter: blur(6px);
-  transition:transform .28s, box-shadow .28s;
+/* Плавное переливание градиента на карточке */
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,240,245,0.75));
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 30px rgba(90,61,92,0.06);
+  transition: transform 0.28s, box-shadow 0.28s;
   position: relative;
   overflow: hidden;
+
+  /* анимация градиента */
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
 }
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-.card:hover::before {
-  transform: scaleX(1);
-}
-.card:hover{transform:translateY(-10px); box-shadow:0 20px 50px rgba(90,61,92,0.1)}
+
 
 /* About section */
 .about-image{
@@ -805,10 +820,10 @@ section{padding:70px 0}
   display:flex;gap:10px;justify-content:center;margin-top:12px
 }
 
-/* FAQ стили — читаемый вариант */
+/* FAQ стили с градиентным текстом */
 #faq {
   padding: 80px 0;
-  background: rgba(255, 182, 193, 0.08); /* нежный пастельный фон */
+  background: rgba(255, 182, 193, 0.05); /* нежный пастельный фон */
 }
 
 .faq-container {
@@ -818,30 +833,35 @@ section{padding:70px 0}
 }
 
 .faq-item {
-  background: rgba(0, 0, 0, 0.5); /* тёмный полупрозрачный фон для контраста */
+  background: rgba(255,255,255,0.1); /* чуть ярче, чем фон */
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .faq-q {
   padding: 18px 20px;
   font-weight: 700;
-  font-size: 1.05rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #ffd1dc; /* мягкий розовый, контрастный на тёмном фоне */
+  font-size: 1.05rem;
+  color: #fff; /* fallback для старых браузеров */
   font-family: 'Fredoka One', sans-serif;
+  background: linear-gradient(90deg, #ff77aa, #ffcc77); /* градиент для текста */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .faq-q span {
   display: inline-block;
   transition: transform 0.3s ease;
   font-size: 1.2rem;
-  color: #ff77aa;
+  color: #ff77aa; /* яркий акцент для плюса */
 }
 
 .faq-item.active .faq-q span {
@@ -853,19 +873,16 @@ section{padding:70px 0}
   padding: 0 20px;
   overflow: hidden;
   transition: all 0.3s ease;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #ffb6c1; /* темнее светлого розового, хорошо читается */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6); /* чуть сильнее тень для контраста */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f0f0f0; /* светло-серый текст для ответа */
   font-family: 'Montserrat', sans-serif;
 }
 
 .faq-item.active .faq-a {
-  max-height: 300px;
+  max-height: 250px; /* больше места для длинных ответов */
   padding: 15px 20px 18px 20px;
 }
-
-
 
 
 /* CTA Section — текст и кнопка на фоне сайта */
@@ -916,14 +933,13 @@ section{padding:70px 0}
 }
 
 /* Девочка над CTA */
-.anime-girl-link img {
-  max-width: 150px; /* ограничиваем ширину */
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto -40px auto; /* центрируем и опускаем чуть в блок */
-  position: relative;
-  z-index: 2; /* поверх карточки */
+.cta-card .anime-girl-link {
+  position: absolute;
+  top: -20px; /* регулируй высоту */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-decoration: none;
 }
 
 .cta-card .anime-girl-link img {
@@ -1179,12 +1195,13 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 20px 50px;
-  background: linear-gradient(135deg, rgba(255, 240, 245, 0.8), rgba(255, 220, 230, 0.8));
-  box-shadow: 0 6px 20px rgba(255, 182, 220, 0.3); /* легкая тень для объема */
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(255, 220, 230, 0.85));
+  box-shadow: 0 8px 30px rgba(255, 182, 220, 0.35), 0 0 25px rgba(255, 182, 220, 0.2) inset;
+  backdrop-filter: blur(14px);
+  border-radius: 25px;
   transition: all 0.3s ease;
 }
+
 
 /* Логотип с новым шрифтом и объемом */
 .header-inner .logo {
@@ -1207,16 +1224,31 @@ body {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #ff7fae; /* насыщенный пастельный розовый для контраста */
+  color: #ff7fae;
   margin: 0 12px;
   position: relative;
   transition: all 0.3s ease;
 }
 
-.header-inner nav a:hover {
-  color: #ff6eb4;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+.header-inner nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff77aa, #ff99cc);
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s ease;
 }
+
+.header-inner nav a:hover::after {
+  width: 100%;
+}
+
+.header-inner nav a:hover {
+  text-shadow: 0 2px 8px rgba(255,110,180,0.4);
+}
+
 
 /* Кнопка Telegram */
 .header-inner .cta-telegram {
