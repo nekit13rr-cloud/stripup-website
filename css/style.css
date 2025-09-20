@@ -101,34 +101,49 @@ nav {
 }
 
 /* CTA кнопка */
-.cta-telegram {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #ff77aa, #ff99cc);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(255,119,170,0.4);
-  transition: all 0.3s;
+/* CTA-блок */
+.cta-section {
+  position: relative;
+  padding: 60px 20px;
+  background: transparent; /* фон сайта сохраняем */
+  text-align: center;
+  z-index: 0;
 }
 
-.cta-telegram:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255,119,170,0.6);
+.cta-section .cta-card {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5); /* полупрозрачный темный фон, чтобы текст был читаем */
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-/* Иконка Telegram */
-.cta-telegram i {
+.cta-section .cta-card h2 {
+  color: #ffffff; /* белый заголовок */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cta-section .cta-card p {
+  color: #f5f5f5; /* светлый текст подзаголовка */
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-section .btn-primary {
+  background: linear-gradient(135deg, #ff1a70, #ff5fa3); /* яркая градиентная кнопка */
+  color: #ffffff;
+  padding: 12px 30px;
   font-size: 1.1rem;
-  animation: iconFly 2s infinite linear;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes iconFly {
-  0%,100% { transform: translateX(0); }
-  50% { transform: translateX(3px); }
+.cta-section .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255,90,140,0.4);
 }
 
 
