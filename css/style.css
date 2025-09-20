@@ -101,49 +101,34 @@ nav {
 }
 
 /* CTA кнопка */
-/* CTA-блок */
-.cta-section {
-  position: relative;
-  padding: 60px 20px;
-  background: transparent; /* фон сайта сохраняем */
-  text-align: center;
-  z-index: 0;
-}
-
-.cta-section .cta-card {
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.5); /* полупрозрачный темный фон, чтобы текст был читаем */
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-.cta-section .cta-card h2 {
-  color: #5a3d5c; /* темный заголовок */
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.cta-section .cta-card p {
-  color: #f5f5f5; /* светлый текст подзаголовка */
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.cta-section .btn-primary {
-  background: linear-gradient(135deg, #ff1a70, #ff5fa3); /* яркая градиентная кнопка */
-  color: #ffffff;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  border-radius: 12px;
+.cta-telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff77aa, #ff99cc);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255,119,170,0.4);
+  transition: all 0.3s;
 }
 
-.cta-section .btn-primary:hover {
+.cta-telegram:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255,90,140,0.4);
+  box-shadow: 0 8px 20px rgba(255,119,170,0.6);
+}
+
+/* Иконка Telegram */
+.cta-telegram i {
+  font-size: 1.1rem;
+  animation: iconFly 2s infinite linear;
+}
+
+@keyframes iconFly {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
 }
 
 
@@ -866,69 +851,64 @@ section{padding:70px 0}
   padding: 0 20px;
   overflow: hidden;
   transition: all 0.3s ease;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #d6336c; /* насыщенный тёмно-розовый */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.7); /* тень для читаемости */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f0f0f0; /* светло-серый текст для ответа */
   font-family: 'Montserrat', sans-serif;
 }
 
 .faq-item.active .faq-a {
-  max-height: 300px;
+  max-height: 250px; /* больше места для длинных ответов */
   padding: 15px 20px 18px 20px;
 }
 
 
-
 /* CTA Section — текст и кнопка на фоне сайта */
+/* CTA-блок */
 .cta-section {
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   position: relative;
-  z-index: 1;
+  padding: 60px 20px;
+  background: transparent; /* фон сайта сохраняем */
+  text-align: center;
+  z-index: 0;
 }
 
-.cta-card {
-  max-width: 600px;
-  padding: 50px 30px;
+.cta-section .cta-card {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5); /* полупрозрачный темный фон, чтобы текст был читаем */
+  padding: 40px 30px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05); /* слегка прозрачный фон для контраста */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-.cta-card h2 {
-  font-size: 2rem;
+.cta-section .cta-card h2 {
+  color: #5a3d5c; /* белый заголовок */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   font-weight: 700;
-  color: #fff; /* светлый текст для читаемости на фоне */
-  margin-bottom: 15px;
 }
 
-.cta-card p {
-  font-size: 1.1rem;
-  color: #eee; /* чуть светлее для подзаголовка */
+.cta-section .cta-card p {
+  color: #5a3d5c !important; /* тёмно-фиолетовый/розовый */
+  font-size: 1.2rem;
   margin-bottom: 30px;
-  line-height: 1.5;
 }
 
-.cta-card .btn-primary {
+.cta-section .btn-primary {
+  background: linear-gradient(135deg, #ff1a70, #ff5fa3); /* яркая градиентная кнопка */
+  color: #ffffff;
+  padding: 12px 30px;
   font-size: 1.1rem;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #ff4d8d, #ff75a0);
-  color: #fff;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
-  transition: all 0.3s ease;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cta-card .btn-primary:hover {
+.cta-section .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 77, 141, 0.6);
+  box-shadow: 0 10px 20px rgba(255,90,140,0.4);
 }
+
 
 /* Анимация появления */
 @keyframes fadeInUp {
@@ -1136,21 +1116,18 @@ body {
   justify-content: center;
 }
 
-.anime-girl-with-banner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.anime-girl-banner {
+  border: 4px solid #ff6b6b; /* цвет рамки как у калькулятора */
+  border-radius: 30px; /* закругление углов */
+  box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3); /* тень как у калькулятора */
+  transition: all 0.4s ease;
 }
 
-.anime-girl-banner {
-  width: 280px;
-  height: auto;
-  border-radius: 120px;
-  filter: drop-shadow(0 20px 40px rgba(90, 61, 92, 0.2));
-  z-index: 2;
-  position: relative;
+.anime-girl-with-banner:hover .anime-girl-banner {
+  transform: scale(1.05);
+  box-shadow: 0 25px 70px rgba(255, 107, 107, 0.4);
 }
+
 
 /* Эффект при наведении */
 .anime-girl-with-banner:hover .anime-girl-banner {
