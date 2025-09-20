@@ -866,16 +866,18 @@ section{padding:70px 0}
   padding: 0 20px;
   overflow: hidden;
   transition: all 0.3s ease;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #f0f0f0; /* светло-серый текст для ответа */
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #d6336c; /* насыщенный тёмно-розовый */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7); /* тень для читаемости */
   font-family: 'Montserrat', sans-serif;
 }
 
 .faq-item.active .faq-a {
-  max-height: 250px; /* больше места для длинных ответов */
+  max-height: 300px;
   padding: 15px 20px 18px 20px;
 }
+
 
 
 /* CTA Section — текст и кнопка на фоне сайта */
