@@ -909,13 +909,14 @@ section{padding:70px 0}
 }
 
 /* Девочка над CTA */
-.cta-card .anime-girl-link {
-  position: absolute;
-  top: -20px; /* регулируй высоту */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  text-decoration: none;
+.anime-girl-link img {
+  max-width: 150px; /* ограничиваем ширину */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto -40px auto; /* центрируем и опускаем чуть в блок */
+  position: relative;
+  z-index: 2; /* поверх карточки */
 }
 
 .cta-card .anime-girl-link img {
