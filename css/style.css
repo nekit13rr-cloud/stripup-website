@@ -820,7 +820,7 @@ section{padding:70px 0}
   display:flex;gap:10px;justify-content:center;margin-top:12px
 }
 
-/* FAQ стили с градиентным текстом */
+/* FAQ стили — читаемый вариант */
 #faq {
   padding: 80px 0;
   background: rgba(255, 182, 193, 0.08); /* нежный пастельный фон */
@@ -879,6 +879,7 @@ section{padding:70px 0}
   max-height: 300px;
   padding: 15px 20px 18px 20px;
 }
+
 
 
 
