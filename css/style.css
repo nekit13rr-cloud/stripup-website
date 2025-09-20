@@ -111,7 +111,7 @@ nav a:hover::after {
 .hero-container {
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 0px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -119,7 +119,7 @@ nav a:hover::after {
 
 .hero-left {
   flex: 1;
-  max-width: 600px;
+  max-width: 800px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   border-radius: var(--card-radius);
   padding: 40px;
@@ -291,7 +291,6 @@ section{padding:70px 0}
 /* Calculator Wrapper */
 .calculator-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
   max-width: 1000px;
