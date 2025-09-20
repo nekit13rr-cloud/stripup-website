@@ -65,3 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+// FAQ раскрытие
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('active');
+
+    // Закрываем другие, если нужно оставить только один открытым
+    document.querySelectorAll('.faq-item').forEach(other => {
+      if(other !== item) other.classList.remove('active');
+    });
+  });
+});
