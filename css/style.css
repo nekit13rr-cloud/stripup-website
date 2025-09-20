@@ -27,152 +27,116 @@ body{
 .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
 /* Header */
+/* --- Шапка --- */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 60;
-  width: 100%;            /* шапка на всю ширину */
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
   display: flex;
-  justify-content: center;
-  padding: 0;             /* паддинги перенесем внутрь .header-inner */
-  background: none;       /* фон оставим у внутреннего блока */
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05); /* полупрозрачный фон */
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .header-inner {
-  width: 100%;            /* растягиваем на всю ширину */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
   gap: 20px;
-
-  background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
-  padding: 20px 50px;     /* внутренние отступы */
-  box-sizing: border-box;  /* учитываем padding в ширину */
-  border-radius: 0;        /* убираем скругление */
-  box-shadow: 0 6px 20px rgba(90,61,92,0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  transition: all 0.3s ease;
 }
-
 
 /* Логотип */
-.header-inner .logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--text-primary);
+.logo {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.8rem;
+  color: #ff77aa;
   text-decoration: none;
-}
-
-/* Навигация */
-.header-inner nav {
   display: flex;
   align-items: center;
+  gap: 10px;
+  position: relative;
+  animation: logoBounce 2s infinite;
+}
+
+.logo-icon {
+  display: inline-block;
+  transform-origin: bottom center;
+}
+
+/* Анимация логотипа */
+@keyframes logoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Меню */
+nav {
+  display: flex;
   gap: 25px;
+  flex-grow: 1;
+  justify-content: center;
 }
 
-.header-inner nav a {
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.header-inner nav a:hover {
-  color: var(--accent);
-}
-
-/* Кнопка CTA */
-.header-inner .cta-telegram {
-  padding: 10px 20px;
-  background-color: var(--accent);
-  color: #fff;
-  border-radius: 50px;
+.nav-link {
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s;
-}
-
-.header-inner .cta-telegram:hover {
-  background-color: darken(var(--accent), 10%);
-}
-
-/* Адаптивность */
-@media (max-width: 992px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-  }
-
-  .header-inner nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-}
-
-.logo{
-  display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--accent);
-  font-weight:700; font-size:20px;
-  transition: transform 0.3s ease;
-}
-.logo:hover {
-  transform: scale(1.05);
-}
-.logo i{font-size:22px; transform:translateY(2px)}
-
-nav{display:flex; gap:18px; align-items:center}
-nav a{
-  text-decoration:none; color:var(--text); font-weight:600; padding:8px 12px; border-radius:10px;
-  transition: all .22s;
-  font-size:15px;
+  color: #fff;
   position: relative;
+  transition: 0.3s;
 }
-nav a:hover{background:rgba(255,255,255,0.35); color:var(--accent)}
-nav a::after {
+
+.nav-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
-  left: 50%;
   width: 0;
   height: 2px;
-  background: var(--accent);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-nav a:hover::after {
-  width: 70%;
+  background: #ff77aa;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s;
 }
 
-.cta-telegram{
-  display:inline-flex; align-items:center; gap:10px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:white; padding:10px 14px; border-radius:999px; font-weight:700; text-decoration:none;
-  box-shadow:0 8px 20px rgba(255,77,141,0.18);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.cta-telegram::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  transition: all 0.6s ease;
 }
-.cta-telegram:hover::before {
-  left: 100%;
+
+/* CTA кнопка */
+.cta-telegram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff77aa, #ff99cc);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255,119,170,0.4);
+  transition: all 0.3s;
 }
+
 .cta-telegram:hover {
   transform: translateY(-3px);
-  box-shadow:0 12px 25px rgba(255,77,141,0.25);
+  box-shadow: 0 8px 20px rgba(255,119,170,0.6);
 }
+
+/* Иконка Telegram */
+.cta-telegram i {
+  font-size: 1.1rem;
+  animation: iconFly 2s infinite linear;
+}
+
+@keyframes iconFly {
+  0%,100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
 
 /* Обновляем существующие стили hero */
 .hero {
