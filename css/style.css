@@ -994,28 +994,33 @@ footer{padding:40px 0; text-align:center; color:var(--muted)}
 /* ==================== */
 
 /* Убираем все старые фоны */
+/* Основной фон */
 body {
-    background: #ff9bb4 !important; /* Сплошной розовый цвет */
-    background-image: none !important;
-    overflow-x: hidden;
+  background: #ffb6c1; /* мягкий пастельный розовый */
+  overflow-x: hidden;
 }
 
-/* Убираем градиентные фоны */
-.animated-bg,
-.full-bg {
-    display: none !important;
-}
-
-/* Настраиваем canvas с лепестками */
+/* Canvas с лепестками */
 #petalCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Размещаем под контентом */
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* чтобы клики проходили сквозь canvas */
+  z-index: 1; /* ставим выше фона, ниже контента */
 }
+
+.animated-bg, .full-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* фон ниже canvas */
+}
+
+
 
 /* Улучшаем читаемость текста на розовом фоне */
 .hero-left h1,
@@ -1084,16 +1089,15 @@ body {
 
 /* Шапка */
 .header-inner {
-  font-family: 'Poppins', 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 50px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
-  box-shadow: 0 6px 20px rgba(90,61,92,0.06);
-  backdrop-filter: blur(8px);
-  border-radius: 0;
-  box-sizing: border-box;
+  background: linear-gradient(135deg, rgba(255, 240, 245, 0.8), rgba(255, 220, 230, 0.8));
+  box-shadow: 0 6px 20px rgba(255, 182, 220, 0.3); /* легкая тень для объема */
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
 /* Логотип с новым шрифтом и объемом */
@@ -1108,12 +1112,13 @@ body {
 
 /* Навигация с Montserrat */
 .header-inner nav a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #5b2c6f;
-  margin: 0 10px;
-  transition: color 0.3s, text-shadow 0.3s;
+  color: #ff7fae; /* насыщенный пастельный розовый для контраста */
+  margin: 0 12px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .header-inner nav a:hover {
