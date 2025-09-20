@@ -1181,13 +1181,19 @@ body {
 
 /* Логотип с новым шрифтом и объемом */
 .header-inner .logo {
-  font-family: 'Fredoka One', 'Poppins', sans-serif; /* Fredoka One для логотипа */
-  font-weight: 400; /* для Fredoka One обычно достаточно */
+  font-family: 'Fredoka One', 'Poppins', sans-serif;
+  font-weight: 400;
   font-size: 2rem;
   color: #ff6eb4;
   letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #b03a82, 4px 4px 5px rgba(0,0,0,0.3); /* объем */
+  text-shadow: 2px 2px 0 #b03a82, 4px 4px 8px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
 }
+
+.header-inner .logo:hover {
+  transform: scale(1.05);
+}
+
 
 /* Навигация с Montserrat */
 .header-inner nav a {
