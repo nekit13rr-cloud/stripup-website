@@ -111,7 +111,7 @@ nav a:hover::after {
 .hero-container {
   display: flex;
   align-items: center;
-  gap: 0px;
+  gap: 35px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -258,23 +258,27 @@ section{padding:70px 0}
 
 /* tariffs style */
 .tariff .price{font-size:2rem; font-weight:800; color:var(--accent)}
-.tariff.popular{
-  border:2px solid rgba(255,77,141,0.12); 
-  transform:scale(1.03);
+.tariff.popular {
   position: relative;
+  overflow: hidden; /* чтобы лента не вылезала */
 }
+
 .tariff.popular::after {
   content: 'ПОПУЛЯРНЫЙ';
   position: absolute;
-  top: -1px;
-  right: 20px;
+  top: 35px;
+  right: -45px;
+  transform: rotate(45deg);
   background: var(--accent);
   color: white;
   font-size: 12px;
   font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 20px;
+  padding: 6px 50px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  letter-spacing: 1px;
 }
+
 .tariff ul{
   color:var(--muted);
   padding-left: 20px;
