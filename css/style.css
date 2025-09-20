@@ -798,11 +798,10 @@ section{padding:70px 0}
   display:flex;gap:10px;justify-content:center;margin-top:12px
 }
 
-/* FAQ */
-/* FAQ стили */
+/* FAQ стили с градиентным текстом */
 #faq {
   padding: 80px 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 182, 193, 0.05); /* нежный пастельный фон */
 }
 
 .faq-container {
@@ -812,27 +811,35 @@ section{padding:70px 0}
 }
 
 .faq-item {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.1); /* чуть ярче, чем фон */
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .faq-q {
   padding: 18px 20px;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
-  color: #fff;
+  font-size: 1.05rem;
+  color: #fff; /* fallback для старых браузеров */
+  font-family: 'Fredoka One', sans-serif;
+  background: linear-gradient(90deg, #ff77aa, #ffcc77); /* градиент для текста */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 .faq-q span {
   display: inline-block;
   transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  color: #ff77aa; /* яркий акцент для плюса */
 }
 
 .faq-item.active .faq-q span {
@@ -846,13 +853,15 @@ section{padding:70px 0}
   transition: all 0.3s ease;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #ddd;
+  color: #f0f0f0; /* светло-серый текст для ответа */
+  font-family: 'Montserrat', sans-serif;
 }
 
 .faq-item.active .faq-a {
-  max-height: 200px; /* достаточно места для текста */
+  max-height: 250px; /* больше места для длинных ответов */
   padding: 15px 20px 18px 20px;
 }
+
 
 /* CTA section */
 .cta-section{
