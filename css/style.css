@@ -27,18 +27,91 @@ body{
 .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
 /* Header */
-header{
-  position: sticky; top:12px; z-index:60;
-  padding:12px 0;
-  display:flex; align-items:center; justify-content:space-between;
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  width: 100%;            /* шапка на всю ширину */
+  display: flex;
+  justify-content: center;
+  padding: 0;             /* паддинги перенесем внутрь .header-inner */
+  background: none;       /* фон оставим у внутреннего блока */
 }
 
-.header-inner{
-  display:flex; align-items:center; justify-content:space-between; gap:20px;
+.header-inner {
+  width: 100%;            /* растягиваем на всю ширину */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
   background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
-  padding:10px 16px; border-radius:999px;
+  padding: 20px 50px;     /* внутренние отступы */
+  box-sizing: border-box;  /* учитываем padding в ширину */
+  border-radius: 0;        /* убираем скругление */
   box-shadow: 0 6px 20px rgba(90,61,92,0.06);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition: all 0.3s ease;
+}
+
+
+/* Логотип */
+.header-inner .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* Навигация */
+.header-inner nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-inner nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header-inner nav a:hover {
+  color: var(--accent);
+}
+
+/* Кнопка CTA */
+.header-inner .cta-telegram {
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.header-inner .cta-telegram:hover {
+  background-color: darken(var(--accent), 10%);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .header-inner nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 }
 
 .logo{
@@ -103,7 +176,7 @@ nav a:hover::after {
 
 /* Обновляем существующие стили hero */
 .hero {
-  padding: 80px 0 60px;
+  padding: 120px 0 120px;
   position: relative;
   overflow: hidden;
 }
@@ -140,13 +213,22 @@ nav a:hover::after {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hero-left h1 {
-  font-size: 2.5rem;
-  margin: 15px 0 20px;
-  line-height: 1.1;
-  color: var(--text);
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+.hero-left {
+  flex: 1;
+  max-width: 800px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  border-radius: var(--card-radius);
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(90, 61, 92, 0.1);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
 
 .hero-subtitle {
   color: var(--muted);
@@ -253,7 +335,7 @@ section{padding:70px 0}
 
 /* Benefits section */
 .benefit-icon{
-  font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;
+  font-size: 2rem; color: var(--accent); margin-bottom: 15px;
 }
 
 /* tariffs style */
@@ -995,4 +1077,66 @@ body {
 .anime-girl-with-banner:hover .banner-content {
   animation: floatBanner 1.5s ease-in-out infinite;
 }
-  
+/* Применяем шрифты ко всему телу страницы */
+body {
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+/* Шапка */
+.header-inner {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
+  box-shadow: 0 6px 20px rgba(90,61,92,0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* Логотип с новым шрифтом и объемом */
+.header-inner .logo {
+  font-family: 'Fredoka One', 'Poppins', sans-serif; /* Fredoka One для логотипа */
+  font-weight: 400; /* для Fredoka One обычно достаточно */
+  font-size: 2rem;
+  color: #ff6eb4;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #b03a82, 4px 4px 5px rgba(0,0,0,0.3); /* объем */
+}
+
+/* Навигация с Montserrat */
+.header-inner nav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #5b2c6f;
+  margin: 0 10px;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.header-inner nav a:hover {
+  color: #ff6eb4;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Кнопка Telegram */
+.header-inner .cta-telegram {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff6eb4, #ff9eda);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(255,110,180,0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.header-inner .cta-telegram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255,110,180,0.6);
+}
+
+ 
