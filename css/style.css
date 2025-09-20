@@ -28,51 +28,45 @@ body{
 
 /* Header */
 /* --- Шапка --- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05); /* полупрозрачный фон */
-  backdrop-filter: blur(10px);
-  z-index: 10;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
 .header-inner {
   display: flex;
   align-items: center;
-  width: 100%;
-  gap: 20px;
+  justify-content: space-between;
+  padding: 10px 30px; /* можно уменьшить высоту шапки */
+  background-color: rgba(255, 255, 255, 0.1); /* прозрачный фон под контент */
 }
 
-/* Логотип */
 .logo {
-  font-family: 'Fredoka One', sans-serif;
-  font-size: 1.8rem;
-  color: #ff77aa;
-  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 10px;
-  position: relative;
-  animation: logoBounce 2s infinite;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff77aa;
+  text-decoration: none;
 }
 
 .logo-icon {
-  display: inline-block;
-  transform-origin: bottom center;
+  width: 99px;   /* размер иконки */
+  height: 60px;
+  margin-right: 0px; /* расстояние между иконкой и текстом */
 }
 
-/* Анимация логотипа */
-@keyframes logoBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
 }
+
+.cta-telegram {
+  background-color: #ff77aa;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 
 /* Меню */
 nav {
@@ -805,14 +799,60 @@ section{padding:70px 0}
 }
 
 /* FAQ */
-.faq-container{
-  max-width:860px;margin:18px auto
+/* FAQ стили */
+#faq {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.05);
 }
-.faq-item{overflow:hidden; border-radius:12px; margin-bottom: 12px;}
-.faq-q{padding:14px 18px; background:linear-gradient(90deg, rgba(255,240,235,0.9), rgba(255,245,248,0.7)); cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition: background 0.3s ease;}
-.faq-q:hover {background:linear-gradient(90deg, rgba(255,230,225,0.9), rgba(255,235,238,0.7));}
-.faq-a{padding:0 18px; max-height:0; overflow:hidden; transition:max-height .28s, padding .28s}
-.faq-item.open .faq-a{padding:14px 18px; max-height:400px}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.faq-q {
+  padding: 18px 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.faq-q span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-q span {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  padding: 0 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.faq-item.active .faq-a {
+  max-height: 200px; /* достаточно места для текста */
+  padding: 15px 20px 18px 20px;
+}
 
 /* CTA section */
 .cta-section{
