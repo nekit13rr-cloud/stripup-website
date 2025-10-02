@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
+  <div class="page-wrapper">
   <div class="animated-bg"></div>
   <div class="full-bg"></div>
   <canvas id="petalCanvas"></canvas>
@@ -179,183 +180,53 @@
       </div>
     </section>
 
-<!-- CALCULATOR WITH SHIFTS -->
-<section class="calculator-section" id="calculator">
+<section id="calc">
   <div class="container">
-    <h2 class="section-title">Сколько ты сможешь зарабатывать?</h2>
-    <p class="section-sub">Рассчитай свой потенциальный доход</p>
-
-    <div class="calculator-wrapper">
-      <!-- Левая часть с изображением -->
-      <div class="calculator-image">
-        <img src="https://i.imgur.com/Xsu6eWe.png" alt="Аниме девушка" class="anime-calculator-img">
-      </div>
-      
-      <!-- Правая часть с калькулятором -->
-      <div class="calculator-content">
-        <div class="calculator-card">
-          <!-- Количество смен в неделю -->
-          <div class="calculator-row">
-            <div class="calc-group full-width">
-              <label class="calc-label">Количество смен в неделю</label>
-              <div class="range-container">
-                <input type="range" id="shiftsWeek" class="calc-slider" min="1" max="20" value="10" step="1">
-                <div class="range-value" id="shiftsWeekValue">10 смен</div>
-              </div>
-              <div class="range-labels">
-                <span>1 смена</span>
-                <span>20 смен</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Доход за смену -->
-          <div class="calculator-row">
-            <div class="calc-group full-width">
-              <label class="calc-label">Средний доход за смену, ₽</label>
-              <div class="range-container">
-                <input type="range" id="incomePerShift" class="calc-slider" min="1000" max="20000" value="5000" step="500">
-                <div class="range-value" id="incomePerShiftValue">5 000 ₽</div>
-              </div>
-              <div class="range-labels">
-                <span>1 000 ₽</span>
-                <span>20 000 ₽</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Тариф -->
-          <div class="calculator-row">
-            <div class="calc-group full-width">
-              <label class="calc-label">Тариф</label>
-              <div class="tariff-selector">
-                <select id="tariffSelect" class="tariff-select">
-                  <option value="0.2">Всё сама (80%)</option>
-                  <option value="0.3" selected>Коуч плюс (70%)</option>
-                  <option value="0.4">Личный оператор (60%)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Результаты в сетке -->
-          <div class="results-grid">
-            <div class="result-card">
-              <div class="result-title">За смену</div>
-              <div class="result-sum" id="resultPerShift">4 000 ₽</div>
-            </div>
-            <div class="result-card">
-              <div class="result-title">В неделю</div>
-              <div class="result-sum" id="resultPerWeek">40 000 ₽</div>
-            </div>
-            <div class="result-card highlight">
-              <div class="result-title">В месяц</div>
-              <div class="result-sum" id="resultPerMonth">160 000 ₽</div>
-            </div>
-          </div>
+    <div class="calc-wrapper">
+      <div class="calc-header">
+        <h2>А теперь узнай сколько ты можешь заработать<br> у нас в студии!</h2>
+        <div class="calc-image">
+          <img src="https://i.imgur.com/Xsu6eWe.png" alt="Калькулятор">
         </div>
       </div>
+      <div class="calc-body">
+      <!-- Количество смен -->
+      <div class="calc-group">
+  <h3>Количество смен в неделю</h3>
+  <div class="calc-options">
+    <label class="calc-option"><input type="radio" name="shifts" value="4"><span>4</span></label>
+    <label class="calc-option"><input type="radio" name="shifts" value="5" checked><span>5</span></label>
+    <label class="calc-option"><input type="radio" name="shifts" value="6"><span>6</span></label>
+  </div>
+</div>
+      <!-- Тарифы (вместо знания английского) -->
+      <div class="calc-group">
+  <h3>Тариф</h3>
+  <div class="calc-options">
+    <label class="calc-option"><input type="radio" name="tariff" value="0.8"><span>Всё сама — 80%</span></label>
+    <label class="calc-option"><input type="radio" name="tariff" value="0.7" checked><span>Коуч плюс — 70%</span></label>
+    <label class="calc-option"><input type="radio" name="tariff" value="0.6"><span>Личный оператор — 60%</span></label>
+  </div>
+</div>
+      <!-- Период -->
+      <div class="calc-group">
+  <h3>Показать период</h3>
+  <div class="calc-options">
+    <label class="calc-option"><input type="radio" name="period" value="week"><span>Неделя</span></label>
+    <label class="calc-option"><input type="radio" name="period" value="month" checked><span>Месяц</span></label>
+    <label class="calc-option"><input type="radio" name="period" value="year"><span>Год</span></label>
+  </div>
+</div>
+      <!-- Результат -->
+      <div class="calc-result">
+  <div class="result-box">
+    <p>Ты заработаешь</p>
+    <span id="calcSum">150000 руб.</span>
+  </div>
+  <p class="note">Твой чистый доход за период,<br>переводим на карту каждые 2 недели.</p>
+     </div>
     </div>
   </div>
-</section>
-<!-- TESTIMONIALS - TEXT LEFT, PHONE RIGHT -->
-<section id="testimonials">
-  <div class="container">
-    <h2 class="section-title">Мы ждём на собеседование именно тебя</h2>
-    <p class="section-sub">Присоединяйся к нашей команде и начни зарабатывать уже сегодня</p>
-
-    <div class="testimonials-combined">
-      <div class="testimonials-content">
-        <!-- Левая часть - текст -->
-        <div class="testimonials-text-side">
-          <div class="requirements-list">
-            <!-- Требование 1 -->
-            <div class="requirement-item">
-              <div class="requirement-icon">
-                <i class="fas fa-birthday-cake"></i>
-              </div>
-              <div class="requirement-content">
-                <h3>Возраст от 18 до 30 лет</h3>
-                <p>Ты молода, хочешь добиться в жизни успеха, готова учиться и двигаться вперёд? Приходи работать к нам!</p>
-              </div>
-            </div>
-
-            <!-- Требование 2 -->
-            <div class="requirement-item">
-              <div class="requirement-icon">
-                <i class="fas fa-star"></i>
-              </div>
-              <div class="requirement-content">
-                <h3>Внешность</h3>
-                <p>Внешность в этой работе далеко не самое главное, энергичность и харизма, как модели, будут твоими главными плюсами.</p>
-              </div>
-            </div>
-
-            <!-- Требование 3 -->
-            <div class="requirement-item">
-              <div class="requirement-icon">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-              <div class="requirement-content">
-                <h3>Опыт работы</h3>
-                <p>Это не так важно, мы обучаем с нуля, главное это твоё стремление и активная жизненная позиция.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Кнопка CTA -->
-          <div class="requirements-cta">
-            <a href="https://t.me/stripup_support" class="btn btn-primary">
-              <i class="fab fa-telegram"></i> Записаться на собеседование
-            </a>
-          </div>
-        </div>
-
-        <!-- Правая часть - телефон со скриншотами -->
-        <div class="testimonials-phone-side">
-          <div class="phone-mockup-combined">
-            <div class="phone-notch"></div>
-            <div class="phone-screen-combined">
-              <!-- Скриншоты -->
-              <div class="phone-screenshot active" data-index="0">
-                <img src="https://i.imgur.com/9qYJtcK.jpeg" alt="Отзыв 1">
-              </div>
-              <div class="phone-screenshot" data-index="1">
-                <img src="https://i.imgur.com/YrI9HXF.jpeg" alt="Отзыв 2">
-              </div>
-              <div class="phone-screenshot" data-index="2">
-                <img src="https://i.imgur.com/Q9Z0tpI.jpeg" alt="Отзыв 3">
-              </div>
-              <div class="phone-screenshot" data-index="3">
-                <img src="https://i.imgur.com/sj7FRlq.jpeg" alt="Отзыв 4">
-              </div>
-              <div class="phone-screenshot" data-index="4">
-                <img src="https://i.imgur.com/VpUgQYp.jpeg" alt="Отзыв 5">
-              </div>
-               <div class="phone-screenshot" data-index="4">
-                <img src="https://i.imgur.com/VpUgQYp.jpeg" alt="Отзыв 5">
-            </div>
-               <div class="phone-screenshot" data-index="5">
-                <img src="https://i.imgur.com/73ElNoz.jpeg" alt="Отзыв 6">
-              </div>
-            <div class="phone-home"></div>
-          </div>
-
-          <!-- Навигация для телефона -->
-          <div class="phone-navigation">
-            <button class="phone-nav-btn prev" id="phoneNavPrev">
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="phone-dots" id="phoneDots"></div>
-            <button class="phone-nav-btn next" id="phoneNavNext">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
     <!-- FAQ -->
     <section id="faq">
       <div class="container">
@@ -403,20 +274,6 @@
   </div>
 </section>
 
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">StripUp</div>
-        <div class="footer-copyright">© 2025 StripUp. Все права защищены.</div>
-        <div class="socials">
-          <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
   <!-- floating telegram -->
   <a class="float-telegram" href="https://t.me/stripup_support"><i class="fab fa-telegram"></i> Написать в Telegram</a>
 
@@ -443,8 +300,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-</body>
-</html>
-
+<footer class="footer">
+      © 2025 StripUp. Все права защищены.
+    </footer>
+  </div>
 </body>
 </html>
