@@ -318,16 +318,13 @@
             <div class="phone-screen-combined">
               <!-- Скриншоты -->
               <div class="phone-screenshot active" data-index="0">
-                <img src="https://i.imgur.com/73ElNoz.jpeg" alt="Отзыв 1">
+                <img src="https://i.imgur.com/g5XcR8j.png" alt="Отзыв 1">
               </div>
               <div class="phone-screenshot" data-index="1">
-                <img src="https://i.imgur.com/VpUgQYp.jpeg" alt="Отзыв 2">
+                <img src="https://i.imgur.com/h8Yc9K2.png" alt="Отзыв 2">
               </div>
               <div class="phone-screenshot" data-index="2">
-                <img src="https://i.imgur.com/sj7FRlq.jpeg" alt="Отзыв 3">
-                 </div>
-                <div class="phone-screenshot" data-index="3">
-                 <img src="https://i.imgur.com/YrI9HXF.jpeg" alt="Отзыв 4">
+                <img src="https://i.imgur.com/j9ZcL3m.png" alt="Отзыв 3">
               </div>
             </div>
             <div class="phone-home"></div>
@@ -404,6 +401,9 @@
         <div class="footer-copyright">© 2025 StripUp. Все права защищены.</div>
         <div class="socials">
           <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-vk"></i></a>
         </div>
       </div>
     </div>
@@ -416,5 +416,27 @@
   <script src="js/animations.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
+<!-- твоя секция FAQ -->
+<section id="faq">
+  ...
+</section>
+
+<!-- JS для работы FAQ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-q');
+
+    question.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
+
 </body>
 </html>
