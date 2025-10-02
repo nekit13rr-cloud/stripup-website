@@ -1,4 +1,185 @@
-<!-- CALCULATOR WITH SHIFTS -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StripUp — Аниме Студия</title>
+  <meta name="description" content="StripUp — уютная аниме-студия. Работа из дома, обучение, анонимность и высокий доход." />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="StripUp — Аниме Студия" />
+  <meta property="og:description" content="Join our pastel anime community — учимся, работаем, зарабатываем в комфортной атмосфере." />
+  <link rel="icon" href="https://i.ibb.co/8mYxg2H/sakura-favicon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- CSS файлы -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <div class="animated-bg"></div>
+  <div class="full-bg"></div>
+  <canvas id="petalCanvas"></canvas>
+  <div class="particles-container" id="particlesContainer"></div>
+ 
+ 
+  <header>
+  <div class="header-inner">
+    <a href="#" class="logo" id="logoLink">
+      <img src="https://i.imgur.com/ga2xVOd.png" alt="Icon" class="logo-icon">
+      StripUp
+    </a>
+
+    <nav>
+      <a href="#hero" class="nav-link active">Главная</a>
+      <a href="#tariffs" class="nav-link">Тарифы</a>
+      <a href="#benefits" class="nav-link">Преимущества</a>
+      <a href="#testimonials" class="nav-link">Отзывы</a>
+    <a class="cta-support" href="https://t.me/stripup_support" target="_blank">
+  Поддержка
+</a>
+    </nav>
+    
+
+    <a href="https://t.me/stripup_support" class="cta-telegram">
+      <i class="fab fa-telegram"></i> Написать в Telegram
+    </a>
+  </div>
+</header>
+
+
+  <main>
+    <!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container hero-container">
+    <div class="hero-left">
+      <span class="kicker">Присоединяйся</span>
+      <h1>
+        <span class="text-gradient">Твой успех начинается здесь и сейчас!</span> 
+      </h1>
+      <p class="hero-subtitle">Преврати свое обаяние в стабильный доход. Мы обеспечим тебя самой современной платформой и надежной поддержкой 24/7.</p>
+
+      <div class="hero-ctas">
+        <a href="https://t.me/stripup_support" class="btn btn-primary">
+          <i class="fab fa-telegram"></i> Начать работать
+        </a>
+        <a href="#tariffs" class="btn btn-ghost">Смотреть тарифы</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="anime-girl-with-banner">
+        <div class="banner-content">
+          <div class="banner-arrow"></div>
+        </div>
+        <img src="https://i.imgur.com/QEcbznz.png" alt="Аниме девушка" class="anime-girl-banner">
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- BENEFITS -->
+    <section id="benefits">
+      <div class="container">
+        <h2 class="section-title">Преимущества</h2>
+        <p class="section-sub">Мягкая поддержка, обучение и высокий доход в уютной студии.</p>
+
+        <div class="grid benefits-grid">
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h4>Работа из дома</h4>
+            <p>Никаких поездок на студию — всё можно делать прямо из своей комнаты.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h4>Гибкий график</h4>
+            <p>Самостоятельно планируй свои стримы и отдых.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-user-secret"></i>
+            </div>
+            <h4>Анонимность</h4>
+            <p>Помогаем настроить приватность и защищаем данные.</p>
+          </div>
+          <div class="card">
+            <div class="benefit-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>Обучение</h4>
+            <p>Бесплатные курсы и персональный коуч.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFFS -->
+    <section id="tariffs">
+      <div class="container">
+        <h2 class="section-title">Тарифы</h2>
+        <p class="section-sub">Выбери подходящий пакет — от самостоятельного до с личным оператором.</p>
+
+        <div class="grid tariffs-grid">
+          <div class="card tariff">
+            <h3>ВСЁ САМА</h3>
+            <div class="price">80%</div>
+            <p>Для тех, кто хочет быть самостоятельной и свободной.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Красивое и аккуратное оформление аккаунтов.</li>
+              <li><i class="fas fa-check-circle"></i> Поддержка в технических вопросах, чтобы всё работало без стресса.</li>
+              <li><i class="fas fa-check-circle"></i> Еженедельные стабильные выплаты на карту.</li>
+              <li><i class="fas fa-check-circle"></i> Отчёт о доходах за неделю, чтобы видеть свой рост.</li>
+              <li><i class="fas fa-check-circle"></i> Ты сама хозяйка своего пути, а мы всегда рядом, чтобы подстраховать.</li>
+            </ul>
+            <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+          </div>
+
+          <div class="card tariff popular">
+            <h3>Коуч плюс</h3>
+            <div class="price">70%</div>
+            <p>Подходит, если хочется не только работать, но и развиваться с поддержкой.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Красивое и аккуратное оформление аккаунтов.</li>
+              <li><i class="fas fa-check-circle"></i> Фотосессия от студии каждые 3 месяца — новые образы и свежий контент.</li>
+              <li><i class="fas fa-check-circle"></i> Разбор твоей работы раз в две недели от коуча, который помогает раскрывать твой потенциал.</li>
+              <li><i class="fas fa-check-circle"></i> Постоянная техническая помощь.</li>
+              <li><i class="fas fa-check-circle"></i> Еженедельные выплаты на карту.</li>
+              <li><i class="fas fa-check-circle"></i> Подробный отчёт о доходах за неделю.</li>
+              <li><i class="fas fa-check-circle"></i> С этим пакетом ты не одна — рядом команда, которая вдохновляет и помогает.</li>
+            </ul>
+            <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+          </div>
+
+          <div class="card tariff">
+            <h3>Твой личный оператор</h3>
+            <div class="price">60%</div>
+            <p>Ты наслаждаешься процессом, а мы заботимся обо всём остальном.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Максимальная забота и поддержка — всё ради твоего спокойствия.</li>
+              <li><i class="fas fa-check-circle"></i> Красивое и аккуратное оформление аккаунтов.</li>
+              <li><i class="fas fa-check-circle"></i> Мы полностью берём работу на себя — твоя задача только сиять в кадре.</li>
+              <li><i class="fas fa-check-circle"></i> Оператор работает удалённо по 6 часов в смену, 5 дней в неделю.</li>
+              <li><i class="fas fa-check-circle"></i> Техническая помощь всегда на связи.</li>
+              <li><i class="fas fa-check-circle"></i> Индивидуальная стратегия.</li>
+              <li><i class="fas fa-check-circle"></i> Стабильные выплаты каждую неделю прямо на карту.</li>
+            </ul>
+            <a href="https://t.me/stripup_support" class="btn btn-primary">Выбрать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- CALCULATOR LIKE selfie-webstudio.ru -->
 <section class="calculator-section" id="calculator">
   <div class="container">
     <h2 class="section-title">Сколько ты сможешь зарабатывать?</h2>
@@ -13,39 +194,33 @@
       <!-- Правая часть с калькулятором -->
       <div class="calculator-content">
         <div class="calculator-card">
-          <!-- Количество смен в неделю -->
+          <!-- Первая строка - Часы и Дни -->
           <div class="calculator-row">
-            <div class="calc-group full-width">
-              <label class="calc-label">Количество смен в неделю</label>
+            <div class="calc-group">
+              <label class="calc-label">Часов в день</label>
               <div class="range-container">
-                <input type="range" id="shiftsWeek" class="calc-slider" min="1" max="20" value="10" step="1">
-                <div class="range-value" id="shiftsWeekValue">10 смен</div>
+                <input type="range" id="hoursDay" class="calc-slider" min="1" max="8" value="4" step="0.5">
+                <div class="range-value" id="hoursDayValue">4</div>
               </div>
-              <div class="range-labels">
-                <span>1 смена</span>
-                <span>20 смен</span>
+            </div>
+            
+            <div class="calc-group">
+              <label class="calc-label">Дней в неделю</label>
+              <div class="range-container">
+                <input type="range" id="daysWeek" class="calc-slider" min="1" max="7" value="5" step="1">
+                <div class="range-value" id="daysWeekValue">5</div>
               </div>
             </div>
           </div>
 
-          <!-- Доход за смену -->
+          <!-- Вторая строка - Ставка и Тариф -->
           <div class="calculator-row">
-            <div class="calc-group full-width">
-              <label class="calc-label">Средний доход за смену, ₽</label>
-              <div class="range-container">
-                <input type="range" id="incomePerShift" class="calc-slider" min="1000" max="20000" value="5000" step="500">
-                <div class="range-value" id="incomePerShiftValue">5 000 ₽</div>
-              </div>
-              <div class="range-labels">
-                <span>1 000 ₽</span>
-                <span>20 000 ₽</span>
-              </div>
+            <div class="calc-group">
+             
+              
             </div>
-          </div>
-
-          <!-- Тариф -->
-          <div class="calculator-row">
-            <div class="calc-group full-width">
+            
+            <div class="calc-group">
               <label class="calc-label">Тариф</label>
               <div class="tariff-selector">
                 <select id="tariffSelect" class="tariff-select">
@@ -60,16 +235,20 @@
           <!-- Результаты в сетке -->
           <div class="results-grid">
             <div class="result-card">
-              <div class="result-title">За смену</div>
-              <div class="result-sum" id="resultPerShift">4 000 ₽</div>
+              <div class="result-title">В час</div>
+              <div class="result-sum" id="resultPerHour">1 600 ₽</div>
+            </div>
+            <div class="result-card">
+              <div class="result-title">В день</div>
+              <div class="result-sum" id="resultPerDay">6 400 ₽</div>
             </div>
             <div class="result-card">
               <div class="result-title">В неделю</div>
-              <div class="result-sum" id="resultPerWeek">40 000 ₽</div>
+              <div class="result-sum" id="resultPerWeek">32 000 ₽</div>
             </div>
             <div class="result-card highlight">
               <div class="result-title">В месяц</div>
-              <div class="result-sum" id="resultPerMonth">160 000 ₽</div>
+              <div class="result-sum" id="resultPerMonth">128 000 ₽</div>
             </div>
           </div>
         </div>
@@ -77,3 +256,77 @@
     </div>
   </div>
 </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Вопросы и ответы</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-q">Как проходит обучение?<span>+</span></div>
+            <div class="faq-a">Обучение онлайн: техника, безопасность, поведенческие рекомендации и стратегии роста.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Как платят?<span>+</span></div>
+            <div class="faq-a">Выплаты: первый месяц еженедельно, далее два раза в месяц. Поддерживаем прозрачную статистику.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Нужен ли опыт?<span>+</span></div>
+            <div class="faq-a">Опыт не требуется — мы обучаем с нуля и помогаем на всех этапах становления.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Какое оборудование нужно?<span>+</span></div>
+            <div class="faq-a">Достаточно современного смартфона или ноутбука с камерой. Поможем с настройкой.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+  <div class="container">
+    <div class="card cta-card">
+      <div class="cta-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h2>Готовы начать?</h2>
+      <p>Присоединяйся к нам и начни зарабатывать уже сегодня.</p>
+      <a href="https://t.me/stripup_support" class="btn btn-primary">Присоединиться</a>
+
+      <!-- Девочка прямо внутри карточки -->
+      <a href="https://t.me/stripup_support" class="anime-girl-link">
+        <img src="https://i.imgur.com/E7NRhrU.png" alt="Аниме-девочка">
+      </a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">StripUp</div>
+        <div class="footer-copyright">© 2025 StripUp. Все права защищены.</div>
+        <div class="socials">
+          <a href="https://t.me/stripup_support"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-vk"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- floating telegram -->
+  <a class="float-telegram" href="https://t.me/stripup_support"><i class="fab fa-telegram"></i> Написать в Telegram</a>
+
+  <!-- JavaScript файлы -->
+  <script src="js/animations.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
