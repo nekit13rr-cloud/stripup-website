@@ -32,8 +32,34 @@
  
  
   <header>
-  <div class="mnav-backdrop" id="mnavBackdrop" hidden></div>
+  <div class="header-inner">
+    <a href="#" class="logo" id="logoLink">
+      <img src="https://i.imgur.com/ga2xVOd.png" alt="Icon" class="logo-icon">
+      StripUp
+    </a>
 
+    <nav>
+      <a href="#hero" class="nav-link active">Главная</a>
+      <a href="#tariffs" class="nav-link">Тарифы</a>
+      <a href="#benefits" class="nav-link">Преимущества</a>
+      <a href="#testimonials" class="nav-link">Отзывы</a>
+      <a class="cta-support" href="https://t.me/stripup_support" target="_blank" rel="noopener noreferrer">
+        Поддержка
+      </a>
+    </nav>
+
+    <button class="mnav-burger" id="mnavToggle" aria-label="Открыть меню" aria-controls="mnavDrawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <a href="https://t.me/stripup_support" class="cta-telegram">
+      <i class="fab fa-telegram"></i> Написать в Telegram
+    </a>
+  </div>
+</header>
+
+<!-- Mobile drawer + backdrop (ВНЕ header) -->
+<div class="mnav-backdrop" id="mnavBackdrop" hidden></div>
 <nav class="mnav-drawer" id="mnavDrawer" aria-hidden="true">
   <div class="mnav-drawer__head">
     <a href="#hero" class="logo">
@@ -46,35 +72,12 @@
   <a href="#tariffs" class="mnav-link">Тарифы</a>
   <a href="#benefits" class="mnav-link">Преимущества</a>
   <a href="#testimonials" class="mnav-link">Отзывы</a>
-  <a href="https://t.me/stripup_support" target="_blank" class="mnav-link">Поддержка</a>
+  <a href="https://t.me/stripup_support" target="_blank" rel="noopener noreferrer" class="mnav-link">Поддержка</a>
 
   <a href="https://t.me/stripup_support" class="mnav-cta">
     <i class="fab fa-telegram"></i> Написать в Telegram
   </a>
 </nav>
-  <div class="header-inner">
-    <a href="#" class="logo" id="logoLink">
-      <img src="https://i.imgur.com/ga2xVOd.png" alt="Icon" class="logo-icon">
-      StripUp
-    </a>
-
-    <nav>
-      <a href="#hero" class="nav-link active">Главная</a>
-      <a href="#tariffs" class="nav-link">Тарифы</a>
-      <a href="#benefits" class="nav-link">Преимущества</a>
-      <a href="#testimonials" class="nav-link">Отзывы</a>
-    <a class="cta-support" href="https://t.me/stripup_support" target="_blank">
-  Поддержка
-</a>
-    </nav>
-<button class="mnav-burger" id="mnavToggle" aria-label="Открыть меню" aria-controls="mnavDrawer" aria-expanded="false">
-  <span></span><span></span><span></span>
-</button>
-    <a href="https://t.me/stripup_support" class="cta-telegram">
-      <i class="fab fa-telegram"></i> Написать в Telegram
-    </a>
-  </div>
-</header>
 
 
   <main>
