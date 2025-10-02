@@ -1,83 +1,8 @@
-// Calculator functionality
+// CALCULATOR CODE - вставляем в main.js
 document.addEventListener('DOMContentLoaded', function() {
-  const calculateIncome = () => {
-    const hours = parseFloat(document.getElementById('hours').value) || 0;
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
-    const tariff = parseFloat(document.getElementById('tariff').value) || 0;
+    console.log('StripUp Calculator initialized');
     
-    const grossIncome = hours * hourlyRate;
-    const netIncome = grossIncome * (1 - tariff);
-    
-    document.getElementById('result').textContent = `${Math.round(netIncome).toLocaleString('ru-RU')} ₽`;
-  };
-
-  // Initial calculation
-  calculateIncome();
-
-  // Event listeners
-  document.getElementById('hours').addEventListener('input', calculateIncome);
-  document.getElementById('hourlyRate').addEventListener('input', calculateIncome);
-  document.getElementById('tariff').addEventListener('change', calculateIncome);
-
-  // Calculator buttons
-  document.querySelectorAll('.calc-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const target = this.getAttribute('data-target');
-      const input = document.getElementById(target);
-      const isPlus = this.classList.contains('plus');
-      const currentValue = parseFloat(input.value) || 0;
-      
-      if (isPlus) {
-        input.value = currentValue + 1;
-      } else {
-        input.value = Math.max(0, currentValue - 1);
-      }
-      
-      // Trigger animation
-      this.style.transform = 'scale(0.9)';
-      setTimeout(() => {
-        this.style.transform = '';
-      }, 100);
-      
-      input.dispatchEvent(new Event('input'));
-    });
-  });
-
-  // Prevent negative values
-  document.querySelectorAll('input[type="number"]').forEach(input => {
-    input.addEventListener('change', function() {
-      if (this.value < 0) this.value = 0;
-      calculateIncome();
-    });
-  });
-
-  // Add hover effect to calculator card
-  const calculatorCard = document.querySelector('.calculator-card');
-  if (calculatorCard) {
-    calculatorCard.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-5px)';
-      this.style.boxShadow = '0 25px 70px rgba(255, 107, 107, 0.25)';
-    });
-    
-    calculatorCard.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
-      this.style.boxShadow = '0 20px 60px rgba(255, 107, 107, 0.2)';
-    });
-  }
-});
-// FAQ раскрытие
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    item.classList.toggle('active');
-
-    // Закрываем другие, если нужно оставить только один открытым
-    document.querySelectorAll('.faq-item').forEach(other => {
-      if(other !== item) other.classList.remove('active');
-      // WORKING CALCULATOR 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Calculator initialized');
-    
-    // Получаем все элементы
+    // Получаем все элементы калькулятора
     const hoursSlider = document.getElementById('hoursDay');
     const daysSlider = document.getElementById('daysWeek');
     const rateSlider = document.getElementById('hourRate');
@@ -94,9 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Проверяем что все элементы найдены
     if (!hoursSlider || !daysSlider || !rateSlider) {
-        console.error('Some slider elements not found');
+        console.log('Calculator elements not found - page without calculator');
         return;
     }
+    
+    console.log('All calculator elements found');
     
     // Функция форматирования чисел
     function formatNumber(num) {
@@ -105,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Функция обновления значений ползунков
     function updateSliderValues() {
-        hoursValue.textContent = hoursSlider.value;
-        daysValue.textContent = daysSlider.value;
-        rateValue.textContent = formatNumber(rateSlider.value);
+        if (hoursValue) hoursValue.textContent = hoursSlider.value;
+        if (daysValue) daysValue.textContent = daysSlider.value;
+        if (rateValue) rateValue.textContent = formatNumber(rateSlider.value);
     }
     
     // Функция расчета дохода
@@ -117,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const hourRate = parseInt(rateSlider.value);
         const tariff = parseFloat(tariffSelect.value);
         
-        console.log('Calculating with:', { hoursPerDay, daysPerWeek, hourRate, tariff });
+        console.log('Calculating income:', { hoursPerDay, daysPerWeek, hourRate, tariff });
         
         // Расчет доходов
         const hourlyIncome = hourRate * (1 - tariff);
@@ -126,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const monthlyIncome = weeklyIncome * 4;
         
         // Обновление результатов
-        resultPerHour.textContent = formatNumber(Math.round(hourlyIncome)) + ' ₽';
-        resultPerDay.textContent = formatNumber(Math.round(dailyIncome)) + ' ₽';
-        resultPerWeek.textContent = formatNumber(Math.round(weeklyIncome)) + ' ₽';
-        resultPerMonth.textContent = formatNumber(Math.round(monthlyIncome)) + ' ₽';
+        if (resultPerHour) resultPerHour.textContent = formatNumber(Math.round(hourlyIncome)) + ' ₽';
+        if (resultPerDay) resultPerDay.textContent = formatNumber(Math.round(dailyIncome)) + ' ₽';
+        if (resultPerWeek) resultPerWeek.textContent = formatNumber(Math.round(weeklyIncome)) + ' ₽';
+        if (resultPerMonth) resultPerMonth.textContent = formatNumber(Math.round(monthlyIncome)) + ' ₽';
     }
     
     // Назначаем обработчики событий
@@ -157,7 +84,4 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateIncome();
     
     console.log('Calculator setup complete');
-});
-    });
-  });
 });
