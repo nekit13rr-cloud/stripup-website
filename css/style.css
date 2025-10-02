@@ -1883,3 +1883,298 @@ body {
     font-size: 20px;
   }
 }
+/* Стили для кнопок выбора смен */
+.shifts-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.shift-option {
+  flex: 1;
+  padding: 15px 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 77, 141, 0.2);
+  border-radius: 12px;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-size: 14px;
+}
+
+.shift-option.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 77, 141, 0.3);
+}
+
+.shift-option:hover:not(.active) {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  background: rgba(255, 77, 141, 0.1);
+}
+
+/* Фиксированный доход */
+.fixed-income {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.fixed-income-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.income-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+/* Футер с отступами */
+footer {
+  padding: 60px 0 40px; /* увеличиваем верхний отступ */
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* увеличиваем расстояние между элементами */
+  align-items: center;
+  margin-top: 20px; /* дополнительный отступ сверху */
+}
+
+.footer-logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-copyright {
+  color: var(--muted);
+  margin: 10px 0;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+/* Футер в самом низу */
+footer {
+  position: relative;
+  padding: 40px 0 30px;
+  margin-top: auto; /* это важно - прижимает к низу */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Убираем лишние фоны если они есть */
+.animated-bg,
+.full-bg,
+#petalCanvas {
+  height: 100vh; /* ограничиваем высоту фона */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Основной контент занимает всю доступную высоту */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* растягивает основной контент */
+}
+/* Ограничиваем расширение фона */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.animated-bg {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+/* Футер - сайт заканчивается здесь */
+footer {
+  padding: 60px 0 30px;
+  margin-top: 0; /* убираем верхний отступ */
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Основной контент занимает всю высоту */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Убираем отступы у последней секции перед футером */
+.cta-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Убираем лишние фоны */
+.animated-bg,
+.full-bg,
+#petalCanvas {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* ===================== */
+/* Калькулятор — ровная сетка */
+/* ===================== */
+
+/* светлая карточка как раньше */
+#calc { padding: 80px 0; }
+.calc-wrapper{
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,245,250,.86));
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 18px 40px rgba(90, 61, 92, .10);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.5);
+}
+
+/* шапка */
+.calc-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+.calc-header h2{
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--text);
+}
+.calc-image{flex: 0 0 auto}
+.calc-image img{
+  width: 200px; max-width: 32vw; height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 22px rgba(255,107,150,.22);
+}
+
+/* РОВНАЯ сетка на 4 колонки */
+.calc-body{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: start; /* чтобы верхняя линия была ровной */
+}
+
+/* колонки-«группы» одного вида */
+.calc-group{
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(255,79,141,.12);
+  border-radius: 16px;
+  padding: 18px;
+  min-height: 160px;           /* одинаковая визуальная «высота» */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.calc-group h3{
+  margin: 0 0 6px 0;
+  font-size: 16px; font-weight: 600; color: var(--text);
+}
+
+/* опции — плашки одинаковой высоты, не «пляшут» */
+.calc-options{ display: flex; flex-direction: column; gap: 8px; }
+.calc-option{ display: block; }
+.calc-option input{ display: none; }
+.calc-option span{
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  min-height: 38px; padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,79,141,.22);
+  background: rgba(255,255,255,.8);
+  color: var(--muted);
+  font-size: 14px; font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+}
+.calc-option span:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(255,77,141,.15);
+}
+.calc-option input:checked + span{
+  border-color: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255,77,141,.25);
+}
+
+/* результат — строго в одной колонке, по центру по вертикали */
+.calc-result{
+  background: transparent;
+  display: flex; flex-direction: column; gap: 10px;
+  align-self: stretch;            /* тянется по высоте строки */
+  justify-content: center;        /* центр относительно других колонок */
+}
+.result-box{
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(255,79,161,.25);
+}
+.result-box p{ margin: 0; font-size: 14px; font-weight: 600; opacity:.95; }
+#calcSum{ display:block; margin-top:8px; font-size: 28px; font-weight: 800; }
+.note{ margin: 0 auto; text-align:center; font-size: 13px; color: var(--muted); }
+
+/* адаптив — ровные перестроения, без «ломаных» отступов */
+@media (max-width: 1100px){
+  .calc-body{ grid-template-columns: repeat(2, 1fr); }
+  .calc-result{ order: 4; } /* чтобы результат был последним на планшете */
+}
+@media (max-width: 640px){
+  .calc-wrapper{ padding: 24px; }
+  .calc-header{ flex-direction: column; align-items: center; text-align: center; }
+  .calc-image img{ width: 160px; }
+  .calc-body{ grid-template-columns: 1fr; }
+  .calc-group{ min-height: auto; }
+  .result-box{ padding: 18px 16px; }
+  #calcSum{ font-size: 24px; }
+}
