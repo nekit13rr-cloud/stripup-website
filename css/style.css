@@ -2178,3 +2178,80 @@ main {
   .result-box{ padding: 18px 16px; }
   #calcSum{ font-size: 24px; }
 }
+/* ===== Sticky header (лайт-эффект при скролле) ===== */
+header { position: sticky; top: 0; z-index: 1000; }
+header.is-scrolled .header-inner {
+  background: rgba(255,240,245,0.85);
+  box-shadow: 0 10px 30px rgba(255,182,220,0.28);
+  transition: background .25s ease, box-shadow .25s ease;
+}
+
+/* ===== Burger (покажем только на мобиле) ===== */
+.mnav-burger {
+  display: none;
+  width: 44px; height: 44px; border: 0; background: transparent;
+  border-radius: 12px; padding: 10px; cursor: pointer;
+}
+.mnav-burger:hover { background: rgba(255,255,255,0.25); }
+.mnav-burger span {
+  display: block; height: 2px; background: #ff6eb4; margin: 5px 0;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+/* Кнопка закрытия (крестик) */
+.mnav-close {
+  width: 36px; height: 36px; border: 0; background: transparent; position: relative; cursor: pointer;
+}
+.mnav-close::before, .mnav-close::after {
+  content: ""; position: absolute; left: 8px; right: 8px; top: 17px; height: 2px; background: #ff6eb4;
+}
+.mnav-close::before { transform: rotate(45deg); }
+.mnav-close::after  { transform: rotate(-45deg); }
+
+/* ===== Backdrop ===== */
+.mnav-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transition: opacity .2s ease, visibility .2s ease;
+  z-index: 999;
+}
+.mnav-backdrop.is-visible { opacity: 1; visibility: visible; }
+
+/* ===== Drawer ===== */
+.mnav-drawer {
+  position: fixed; top: 0; right: 0; height: 100dvh; width: min(86vw, 380px);
+  background: linear-gradient(180deg,#fff,#ffeef6);
+  box-shadow: -10px 0 40px rgba(90,61,92,.18);
+  border-left: 1px solid rgba(255,179,208,.35);
+  transform: translateX(100%); transition: transform .26s ease;
+  z-index: 1000; display: flex; flex-direction: column; padding: 18px;
+}
+.mnav-drawer.is-open { transform: translateX(0); }
+.mnav-drawer[aria-hidden="true"] { pointer-events: none; }
+
+.mnav-drawer__head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+
+.mnav-link {
+  display: block; padding: 14px 12px; border-radius: 12px;
+  color: #5a3d5c; text-decoration: none; font-weight: 600;
+  transition: background .2s ease, transform .15s ease;
+}
+.mnav-link:hover { background: rgba(255,77,141,.08); transform: translateX(2px); }
+
+.mnav-cta {
+  margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 16px; border-radius: 14px;
+  background: linear-gradient(135deg,#ff77aa,#ff99cc); color: #fff; text-decoration: none; font-weight: 700;
+  box-shadow: 0 8px 22px rgba(255,119,170,0.35);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 990px){
+  .header-inner nav { display: none; }   /* прячем десктоп-меню */
+  .cta-telegram { display: none; }       /* большую кнопку убираем из шапки */
+  .mnav-burger { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+/* Блокируем прокрутку при открытом меню */
+body.mnav-lock { overflow: hidden; }
