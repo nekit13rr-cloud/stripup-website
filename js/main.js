@@ -5,27 +5,15 @@ function initPhoneNavigation() {
     const nextBtn = document.getElementById('phoneNavNext');
     const dotsContainer = document.getElementById('phoneDots');
     
-    if (phoneScreenshots.length === 0) return;
+    if (phoneScreenshots.length === 0) {
+        console.log('Элементы слайдера не найдены.');
+        return;
+    }
     
     let currentSlide = 0;
     let autoSlideInterval;
     
-    // Создаем точки
-    function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        
-        for (let i = 0; i < phoneScreenshots.length; i++) {
-            const dot = document.createElement('div');
-            dot.className = `phone-dot ${i === currentSlide ? 'active' : ''}`;
-            dot.addEventListener('click', () => {
-                goToSlide(i);
-            });
-            dotsContainer.appendChild(dot);
-        }
-    }
-    
-    // Переход к слайду
+    // Функция перехода к конкретному слайду
     function goToSlide(slideIndex) {
         // Скрываем все скриншоты
         phoneScreenshots.forEach(screenshot => {
@@ -41,17 +29,16 @@ function initPhoneNavigation() {
         updateButtons();
     }
     
-    // Обновляем точки
+    // Обновление индикаторных точек
     function updateDots() {
-        const dots = dotsContainer?.querySelectorAll('.phone-dot');
-        if (!dots) return;
-        
+        if (!dotsContainer) return;
+        const dots = dotsContainer.querySelectorAll('.phone-dot');
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
     }
     
-    // Обновляем кнопки
+    // Обновление состояния кнопок "Назад/Вперед"
     function updateButtons() {
         if (prevBtn) prevBtn.disabled = currentSlide === 0;
         if (nextBtn) nextBtn.disabled = currentSlide === phoneScreenshots.length - 1;
@@ -62,7 +49,7 @@ function initPhoneNavigation() {
         if (currentSlide < phoneScreenshots.length - 1) {
             goToSlide(currentSlide + 1);
         } else {
-            goToSlide(0);
+            goToSlide(0); // Возврат к первому слайду
         }
     }
     
@@ -71,59 +58,46 @@ function initPhoneNavigation() {
         if (currentSlide > 0) {
             goToSlide(currentSlide - 1);
         } else {
-            goToSlide(phoneScreenshots.length - 1);
+            goToSlide(phoneScreenshots.length - 1); // Переход к последнему слайду
         }
     }
     
-    // Автопрокрутка (медленная)
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 6000); // 6 секунд - медленнее
-    }
-    
-    // Останавливаем автопрокрутку при взаимодействии
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-    
-    // Инициализация
-    function init() {
-        createDots();
-        goToSlide(0);
-        startAutoSlide();
+    // Инициализация точек и обработчиков событий
+    function initDotsAndHandlers() {
+        // Создаем точки-индикаторы
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < phoneScreenshots.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = `phone-dot ${i === currentSlide ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
         
-        // События
+        // Назначаем обработчики для кнопок
         if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                stopAutoSlide();
-                prevSlide();
-                startAutoSlide();
-            });
+            prevBtn.addEventListener('click', prevSlide);
         }
-        
         if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                stopAutoSlide();
-                nextSlide();
-                startAutoSlide();
-            });
-        }
-        
-        // Останавливаем автопрокрутку при hover
-        const phoneSection = document.querySelector('.testimonials-phone-side');
-        if (phoneSection) {
-            phoneSection.addEventListener('mouseenter', stopAutoSlide);
-            phoneSection.addEventListener('mouseleave', startAutoSlide);
+            nextBtn.addEventListener('click', nextSlide);
         }
     }
     
-    init();
+    // Инициализация слайдера
+    function init() {
+        initDotsAndHandlers();
+        updateButtons(); // Обновляем начальное состояние кнопок
+        console.log('Слайдер инициализирован, найдено слайдов:', phoneScreenshots.length);
+    }
+    
+    // Запускаем инициализацию после полной загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 }
 
-// Добавляем в DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-    // ... существующий код ...
-    
-    initPhoneNavigation();
-});
+// Вызов функции
+initPhoneNavigation();
