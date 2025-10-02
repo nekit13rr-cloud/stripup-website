@@ -1,111 +1,113 @@
-<script>
-// ===============================
-// 0) PHONE NAVIGATION (если есть)
-// ===============================
-(function initPhoneNavigation(){
-  const screenshots = document.querySelectorAll('.phone-screenshot');
-  const prevBtn = document.getElementById('phoneNavPrev');
-  const nextBtn = document.getElementById('phoneNavNext');
-  const dotsContainer = document.getElementById('phoneDots');
-  if (!screenshots.length) return;
+document.addEventListener("DOMContentLoaded", () => {
+  // === FAQ ===
+  const faqItems = document.querySelectorAll(".faq-item");
 
-  let i = 0;
-  function goTo(n){
-    screenshots.forEach(s=>s.classList.remove('active'));
-    i = (n + screenshots.length) % screenshots.length;
-    screenshots[i].classList.add('active');
-    updateDots(); updateBtns();
-  }
-  function updateBtns(){
-    if (prevBtn) prevBtn.disabled = false;
-    if (nextBtn) nextBtn.disabled = false;
-  }
-  function updateDots(){
-    if (!dotsContainer) return;
-    dotsContainer.innerHTML = '';
-    screenshots.forEach((_, idx)=>{
-      const d = document.createElement('div');
-      d.className = 'phone-dot' + (idx===i ? ' active':'');
-      d.addEventListener('click', ()=>goTo(idx));
-      dotsContainer.appendChild(d);
-    });
-  }
-  prevBtn && prevBtn.addEventListener('click', ()=>goTo(i-1));
-  nextBtn && nextBtn.addEventListener('click', ()=>goTo(i+1));
-  goTo(0);
-})();
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
 
-// ===============================
-// 1) FAQ (под твою разметку .faq-q/.faq-a)
-// ===============================
-(function initFAQ(){
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    const q = item.querySelector('.faq-q');
-    const a = item.querySelector('.faq-a');
-    if (!q || !a) return;
-    q.addEventListener('click', ()=>{
-      item.classList.toggle('active');
-    });
-  });
-})();
+    if (question && answer) {
+      question.addEventListener("click", () => {
+        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
-// ===============================
-// 2) КАЛЬКУЛЯТОР (ЕДИНСТВЕННЫЙ)
-// Разметка: name="shifts" | "tariff" | "period", сумма в #calcSum
-// ===============================
-(function initCalc(){
-  const root = document.getElementById('calc');
-  if (!root) return;
-  const sumEl = root.querySelector('#calcSum');
-  if (!sumEl) return;
+        // Закрываем все ответы (если нужно только одно открыто)
+        faqItems.forEach(i => {
+          const a = i.querySelector(".faq-answer");
+          if (a) a.style.maxHeight = null;
+        });
 
-  const shiftsInputs = root.querySelectorAll('input[name="shifts"]');
-  const tariffInputs = root.querySelectorAll('input[name="tariff"]');
-  const periodInputs = root.querySelectorAll('input[name="period"]');
-
-  // Модель: подставь свою среднюю ГРОСС-выручку за смену
-  const GROSS_PER_SHIFT = 10000; // руб.
-  const WEEKS_IN_MONTH = 4.3;
-  const WEEKS_IN_YEAR  = 52;
-
-  const nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
-  const getChecked = (nodes, fb) => {
-    for (const n of nodes) if (n.checked) return n.value;
-    return fb;
-  };
-
-  let current = 0, raf;
-  function animateTo(target, ms=450){
-    cancelAnimationFrame(raf);
-    const start = performance.now(), from = current;
-    (function frame(t){
-      const p = Math.min(1, (t-start)/ms);
-      const e = 1 - Math.pow(1-p, 3);
-      const val = Math.round(from + (target-from)*e);
-      sumEl.textContent = nf.format(val) + ' руб.';
-      if (p<1) raf = requestAnimationFrame(frame); else current = target;
-    })(start);
-  }
-
-  function recalc(animate=true){
-    const shifts = Number(getChecked(shiftsInputs, 5));     // 4/5/6
-    const share  = Number(getChecked(tariffInputs, 0.7));   // 0.8/0.7/0.6
-    const per    =        getChecked(periodInputs, 'month'); // week/month/year
-
-    const weeks  = per === 'year' ? WEEKS_IN_YEAR : (per === 'week' ? 1 : WEEKS_IN_MONTH);
-    const gross  = shifts * weeks * GROSS_PER_SHIFT;
-    const net    = Math.max(0, Math.round(gross * share));
-
-    if (animate) animateTo(net); else { current = net; sumEl.textContent = nf.format(net) + ' руб.'; }
-  }
-
-  // Слушатели
-  [...shiftsInputs, ...tariffInputs, ...periodInputs].forEach(i=>{
-    i.addEventListener('change', ()=>recalc(true));
-    const lbl = i.closest('label.calc-option');
-    if (lbl) lbl.addEventListener('click', ()=>setTimeout(()=>recalc(true),0));
+        // Открываем выбранный
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    }
   });
 
-  recalc(false);
-})();
-</script>
+  // === Ползунки калькулятора ===
+  const sliders = document.querySelectorAll("input[type='range']");
+
+  sliders.forEach(slider => {
+    const outputSelector = slider.dataset.output; // можно в HTML указать data-output="#id"
+    const output = outputSelector ? document.querySelector(outputSelector) : null;
+
+    const updateValue = () => {
+      if (output) output.textContent = slider.value;
+    };
+
+    slider.addEventListener("input", updateValue);
+    updateValue(); // начальное значение
+  });
+});
+// КАЛЬКУЛЯТОР С ВЫБОРОМ СМЕН
+function initCalculator() {
+    console.log('Инициализация калькулятора со сменами...');
+    
+    const shiftButtons = document.querySelectorAll('.shift-option');
+    const tariffSelect = document.getElementById('tariffSelect');
+    
+    const resultPerShift = document.getElementById('resultPerShift');
+    const resultPerWeek = document.getElementById('resultPerWeek');
+    const resultPerMonth = document.getElementById('resultPerMonth');
+    
+    if (shiftButtons.length === 0) return;
+    
+    function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+    
+    function calculateIncome() {
+        const activeShiftBtn = document.querySelector('.shift-option.active');
+        const shiftsPerWeek = parseInt(activeShiftBtn.dataset.shifts);
+        const incomePerShift = 7000; // Фиксированные 7000 ₽, но не показываем пользователю
+        const tariff = parseFloat(tariffSelect.value);
+        
+        const shiftIncome = incomePerShift * (1 - tariff);
+        const weeklyIncome = shiftIncome * shiftsPerWeek;
+        const monthlyIncome = weeklyIncome * 4;
+        
+        if (resultPerShift) resultPerShift.textContent = formatNumber(Math.round(shiftIncome)) + ' ₽';
+        if (resultPerWeek) resultPerWeek.textContent = formatNumber(Math.round(weeklyIncome)) + ' ₽';
+        if (resultPerMonth) resultPerMonth.textContent = formatNumber(Math.round(monthlyIncome)) + ' ₽';
+    }
+    
+    shiftButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            shiftButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            calculateIncome();
+        });
+    });
+    
+    tariffSelect.addEventListener('change', calculateIncome);
+    calculateIncome();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initCalculator();
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const shiftsRadios = document.querySelectorAll('input[name="shifts"]');
+  const periodRadios = document.querySelectorAll('input[name="period"]');
+  const calcSum = document.getElementById("calcSum");
+
+  function calculate() {
+    let shifts = parseInt(document.querySelector('input[name="shifts"]:checked').value);
+    let period = document.querySelector('input[name="period"]:checked').value;
+
+    // Базовый доход за одну смену (можно менять под себя)
+    let perShift = 7500;
+
+    let total = 0;
+    if (period === "week") total = shifts * perShift;
+    if (period === "month") total = shifts * perShift * 4;
+    if (period === "year") total = shifts * perShift * 48;
+
+    calcSum.textContent = total.toLocaleString("ru-RU") + " руб.";
+  }
+
+  shiftsRadios.forEach(r => r.addEventListener("change", calculate));
+  periodRadios.forEach(r => r.addEventListener("change", calculate));
+
+  calculate(); // запуск при загрузке
+});
