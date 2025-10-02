@@ -1661,9 +1661,9 @@ body {
 .requirement-content h3 {
   color: var(--text);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600; /* цифры будут аккуратнее */
   margin-bottom: 10px;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .requirement-content p {
@@ -1826,11 +1826,11 @@ body {
     grid-template-columns: 1fr;
     gap: 50px;
   }
-  
+
   .testimonials-phone-side {
     order: -1;
   }
-  
+
   .requirements-cta {
     text-align: center;
   }
@@ -1840,23 +1840,23 @@ body {
   .testimonials-combined {
     padding: 0 15px;
   }
-  
+
   .requirement-item {
     padding: 20px;
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .phone-mockup-combined {
     width: 250px;
     height: 500px;
   }
-  
+
   .phone-navigation {
     gap: 15px;
   }
-  
+
   .phone-nav-btn {
     width: 40px;
     height: 40px;
@@ -1868,15 +1868,15 @@ body {
     width: 220px;
     height: 440px;
   }
-  
+
   .requirement-content h3 {
-    font-size: 18px;
+    font-size: 18px; /* уменьшаем только размер */
   }
-  
+
   .requirement-content p {
     font-size: 14px;
   }
-  
+
   .requirement-icon {
     width: 50px;
     height: 50px;
