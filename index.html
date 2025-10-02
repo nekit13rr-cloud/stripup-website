@@ -179,56 +179,82 @@
       </div>
     </section>
 
-<!-- CALCULATOR -->
+<!-- CALCULATOR LIKE selfie-webstudio.ru -->
 <section class="calculator-section" id="calculator">
   <div class="container">
-    <h2 class="section-title">Калькулятор дохода</h2>
-    <p class="section-sub">Рассчитай потенциальный недельный доход после комиссии.</p>
+    <h2 class="section-title">Сколько ты сможешь зарабатывать?</h2>
+    <p class="section-sub">Рассчитай свой потенциальный доход</p>
 
-    <div class="calculator-wrapper reverse">
-      <!-- Левая часть с калькулятором -->
-      <div class="calculator-content">
-        <div class="calculator-card">
-          <div class="calculator-controls">
-            <div class="control-group">
-              <label class="control-label">Часов в неделю</label>
-              <div class="input-with-buttons">
-                <button class="calc-btn minus" data-target="hours">-</button>
-                <input id="hours" type="number" min="0" max="100" value="20" class="calc-input">
-                <button class="calc-btn plus" data-target="hours">+</button>
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label">Часовая ставка (₽)</label>
-              <div class="input-with-buttons">
-                <button class="calc-btn minus" data-target="hourlyRate">-</button>
-                <input id="hourlyRate" type="number" min="0" max="10000" value="2000" class="calc-input">
-                <button class="calc-btn plus" data-target="hourlyRate">+</button>
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label">Тариф</label>
-              <select id="tariff" class="calc-select">
-                <option value="0.2">Всё сама (80%)</option>
-                <option value="0.3" selected>Коуч плюс (70%)</option>
-                <option value="0.4">Твой личный оператор (60%)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="calculator-result">
-            <div class="result-label">Ваш доход в неделю</div>
-            <div id="result" class="result-amount">0 ₽</div>
-            <div class="result-note">после вычета комиссии</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Правая часть с изображением -->
+    <div class="calculator-wrapper">
+      <!-- Левая часть с изображением -->
       <div class="calculator-image">
         <img src="https://i.imgur.com/Xsu6eWe.png" alt="Аниме девушка" class="anime-calculator-img">
+      </div>
+      
+      <!-- Правая часть с калькулятором -->
+      <div class="calculator-content">
+        <div class="calculator-card">
+          <!-- Первая строка - Часы и Дни -->
+          <div class="calculator-row">
+            <div class="calc-group">
+              <label class="calc-label">Часов в день</label>
+              <div class="range-container">
+                <input type="range" id="hoursDay" class="calc-slider" min="1" max="8" value="4" step="0.5">
+                <div class="range-value" id="hoursDayValue">4</div>
+              </div>
+            </div>
+            
+            <div class="calc-group">
+              <label class="calc-label">Дней в неделю</label>
+              <div class="range-container">
+                <input type="range" id="daysWeek" class="calc-slider" min="1" max="7" value="5" step="1">
+                <div class="range-value" id="daysWeekValue">5</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вторая строка - Ставка и Тариф -->
+          <div class="calculator-row">
+            <div class="calc-group">
+              <label class="calc-label">Часовая ставка, ₽</label>
+              <div class="range-container">
+                <input type="range" id="hourRate" class="calc-slider" min="500" max="5000" value="2000" step="100">
+                <div class="range-value" id="hourRateValue">2 000</div>
+              </div>
+            </div>
+            
+            <div class="calc-group">
+              <label class="calc-label">Тариф</label>
+              <div class="tariff-selector">
+                <select id="tariffSelect" class="tariff-select">
+                  <option value="0.2">Всё сама (80%)</option>
+                  <option value="0.3" selected>Коуч плюс (70%)</option>
+                  <option value="0.4">Личный оператор (60%)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Результаты в сетке -->
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="result-title">В час</div>
+              <div class="result-sum" id="resultPerHour">1 600 ₽</div>
+            </div>
+            <div class="result-card">
+              <div class="result-title">В день</div>
+              <div class="result-sum" id="resultPerDay">6 400 ₽</div>
+            </div>
+            <div class="result-card">
+              <div class="result-title">В неделю</div>
+              <div class="result-sum" id="resultPerWeek">32 000 ₽</div>
+            </div>
+            <div class="result-card highlight">
+              <div class="result-title">В месяц</div>
+              <div class="result-sum" id="resultPerMonth">128 000 ₽</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
