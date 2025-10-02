@@ -1761,10 +1761,10 @@ body {
 /* Навигация для телефона */
 .phone-navigation {
   display: flex;
-  align-items: center;
+  justify-content: center; /* центрируем под телефоном */
   gap: 20px;
+  margin-top: 20px; /* отступ сверху */
 }
-
 .phone-nav-btn {
   width: 45px;
   height: 45px;
