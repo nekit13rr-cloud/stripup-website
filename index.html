@@ -179,7 +179,7 @@
       </div>
     </section>
 
-<!-- CALCULATOR LIKE selfie-webstudio.ru -->
+<!-- CALCULATOR WITH SHIFTS -->
 <section class="calculator-section" id="calculator">
   <div class="container">
     <h2 class="section-title">Сколько ты сможешь зарабатывать?</h2>
@@ -194,33 +194,39 @@
       <!-- Правая часть с калькулятором -->
       <div class="calculator-content">
         <div class="calculator-card">
-          <!-- Первая строка - Часы и Дни -->
+          <!-- Количество смен в неделю -->
           <div class="calculator-row">
-            <div class="calc-group">
-              <label class="calc-label">Часов в день</label>
+            <div class="calc-group full-width">
+              <label class="calc-label">Количество смен в неделю</label>
               <div class="range-container">
-                <input type="range" id="hoursDay" class="calc-slider" min="1" max="8" value="4" step="0.5">
-                <div class="range-value" id="hoursDayValue">4</div>
+                <input type="range" id="shiftsWeek" class="calc-slider" min="1" max="20" value="10" step="1">
+                <div class="range-value" id="shiftsWeekValue">10 смен</div>
               </div>
-            </div>
-            
-            <div class="calc-group">
-              <label class="calc-label">Дней в неделю</label>
-              <div class="range-container">
-                <input type="range" id="daysWeek" class="calc-slider" min="1" max="7" value="5" step="1">
-                <div class="range-value" id="daysWeekValue">5</div>
+              <div class="range-labels">
+                <span>1 смена</span>
+                <span>20 смен</span>
               </div>
             </div>
           </div>
 
-          <!-- Вторая строка - Ставка и Тариф -->
+          <!-- Доход за смену -->
           <div class="calculator-row">
-            <div class="calc-group">
-             
-              
+            <div class="calc-group full-width">
+              <label class="calc-label">Средний доход за смену, ₽</label>
+              <div class="range-container">
+                <input type="range" id="incomePerShift" class="calc-slider" min="1000" max="20000" value="5000" step="500">
+                <div class="range-value" id="incomePerShiftValue">5 000 ₽</div>
+              </div>
+              <div class="range-labels">
+                <span>1 000 ₽</span>
+                <span>20 000 ₽</span>
+              </div>
             </div>
-            
-            <div class="calc-group">
+          </div>
+
+          <!-- Тариф -->
+          <div class="calculator-row">
+            <div class="calc-group full-width">
               <label class="calc-label">Тариф</label>
               <div class="tariff-selector">
                 <select id="tariffSelect" class="tariff-select">
@@ -235,20 +241,16 @@
           <!-- Результаты в сетке -->
           <div class="results-grid">
             <div class="result-card">
-              <div class="result-title">В час</div>
-              <div class="result-sum" id="resultPerHour">1 600 ₽</div>
-            </div>
-            <div class="result-card">
-              <div class="result-title">В день</div>
-              <div class="result-sum" id="resultPerDay">6 400 ₽</div>
+              <div class="result-title">За смену</div>
+              <div class="result-sum" id="resultPerShift">4 000 ₽</div>
             </div>
             <div class="result-card">
               <div class="result-title">В неделю</div>
-              <div class="result-sum" id="resultPerWeek">32 000 ₽</div>
+              <div class="result-sum" id="resultPerWeek">40 000 ₽</div>
             </div>
             <div class="result-card highlight">
               <div class="result-title">В месяц</div>
-              <div class="result-sum" id="resultPerMonth">128 000 ₽</div>
+              <div class="result-sum" id="resultPerMonth">160 000 ₽</div>
             </div>
           </div>
         </div>
