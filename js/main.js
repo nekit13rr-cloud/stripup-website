@@ -176,3 +176,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Shifts calculator setup complete');
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // === FAQ ===
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+
+    if (question && answer) {
+      question.addEventListener("click", () => {
+        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
+
+        // Закрываем все ответы (если нужно только одно открыто)
+        faqItems.forEach(i => {
+          const a = i.querySelector(".faq-answer");
+          if (a) a.style.maxHeight = null;
+        });
+
+        // Открываем выбранный
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    }
+  });
+
+  // === Ползунки калькулятора ===
+  const sliders = document.querySelectorAll("input[type='range']");
+
+  sliders.forEach(slider => {
+    const outputSelector = slider.dataset.output; // можно в HTML указать data-output="#id"
+    const output = outputSelector ? document.querySelector(outputSelector) : null;
+
+    const updateValue = () => {
+      if (output) output.textContent = slider.value;
+    };
+
+    slider.addEventListener("input", updateValue);
+    updateValue(); // начальное значение
+  });
+});
