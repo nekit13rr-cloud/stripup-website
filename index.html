@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Работа в вебкам-студии</title>
-  <meta name="description" content="StripUp — уютная вебкам-студия. Работа из дома, обучение, анонимность и высокий доход." />
+  <title>Работа в вебкам студии</title>
+  <meta name="description" content="StripUp — вебкам студия. Работа из дома, обучение, анонимность и высокий доход." />
   
   <!-- Open Graph -->
   <meta property="og:title" content="StripUp — Аниме Студия" />
@@ -32,6 +32,26 @@
  
  
   <header>
+  <div class="mnav-backdrop" id="mnavBackdrop" hidden></div>
+
+<nav class="mnav-drawer" id="mnavDrawer" aria-hidden="true">
+  <div class="mnav-drawer__head">
+    <a href="#hero" class="logo">
+      <img src="https://i.imgur.com/ga2xVOd.png" alt="Icon" class="logo-icon"> StripUp
+    </a>
+    <button class="mnav-close" id="mnavClose" aria-label="Закрыть меню"></button>
+  </div>
+
+  <a href="#hero" class="mnav-link">Главная</a>
+  <a href="#tariffs" class="mnav-link">Тарифы</a>
+  <a href="#benefits" class="mnav-link">Преимущества</a>
+  <a href="#testimonials" class="mnav-link">Отзывы</a>
+  <a href="https://t.me/stripup_support" target="_blank" class="mnav-link">Поддержка</a>
+
+  <a href="https://t.me/stripup_support" class="mnav-cta">
+    <i class="fab fa-telegram"></i> Написать в Telegram
+  </a>
+</nav>
   <div class="header-inner">
     <a href="#" class="logo" id="logoLink">
       <img src="https://i.imgur.com/ga2xVOd.png" alt="Icon" class="logo-icon">
@@ -47,10 +67,9 @@
   Поддержка
 </a>
     </nav>
-    <button class="burger" id="burger" aria-label="Меню" aria-controls="mobileNav" aria-expanded="false">
+<button class="mnav-burger" id="mnavToggle" aria-label="Открыть меню" aria-controls="mnavDrawer" aria-expanded="false">
   <span></span><span></span><span></span>
 </button>
-
     <a href="https://t.me/stripup_support" class="cta-telegram">
       <i class="fab fa-telegram"></i> Написать в Telegram
     </a>
@@ -284,11 +303,6 @@
   <script src="js/animations.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
-<!-- твоя секция FAQ -->
-<section id="faq">
-  ...
-</section>
-
 <!-- JS для работы FAQ -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
