@@ -1,307 +1,111 @@
-// PHONE NAVIGATION FOR REQUIREMENTS SECTION
-function initPhoneNavigation() {
-    const phoneScreenshots = document.querySelectorAll('.phone-screenshot');
-    const prevBtn = document.getElementById('phoneNavPrev');
-    const nextBtn = document.getElementById('phoneNavNext');
-    const dotsContainer = document.getElementById('phoneDots');
-    
-    if (phoneScreenshots.length === 0) {
-        console.log('Элементы слайдера не найдены.');
-        return;
-    }
-    
-    let currentSlide = 0;
-    let autoSlideInterval;
-    
-    // Функция перехода к конкретному слайду
-    function goToSlide(slideIndex) {
-        // Скрываем все скриншоты
-        phoneScreenshots.forEach(screenshot => {
-            screenshot.classList.remove('active');
-        });
-        
-        currentSlide = slideIndex;
-        
-        // Показываем текущий скриншот
-        phoneScreenshots[currentSlide].classList.add('active');
-        
-        updateDots();
-        updateButtons();
-    }
-    
-    // Обновление индикаторных точек
-    function updateDots() {
-        if (!dotsContainer) return;
-        const dots = dotsContainer.querySelectorAll('.phone-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
-    
-    // Обновление состояния кнопок "Назад/Вперед"
-    function updateButtons() {
-        if (prevBtn) prevBtn.disabled = currentSlide === 0;
-        if (nextBtn) nextBtn.disabled = currentSlide === phoneScreenshots.length - 1;
-    }
-    
-    // Следующий слайд
-    function nextSlide() {
-        if (currentSlide < phoneScreenshots.length - 1) {
-            goToSlide(currentSlide + 1);
-        } else {
-            goToSlide(0); // Возврат к первому слайду
-        }
-    }
-    
-    // Предыдущий слайд
-    function prevSlide() {
-        if (currentSlide > 0) {
-            goToSlide(currentSlide - 1);
-        } else {
-            goToSlide(phoneScreenshots.length - 1); // Переход к последнему слайду
-        }
-    }
-    
-    // Инициализация точек и обработчиков событий
-    function initDotsAndHandlers() {
-        // Создаем точки-индикаторы
-        if (dotsContainer) {
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < phoneScreenshots.length; i++) {
-                const dot = document.createElement('div');
-                dot.className = `phone-dot ${i === currentSlide ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            }
-        }
-        
-        // Назначаем обработчики для кнопок
-        if (prevBtn) {
-            prevBtn.addEventListener('click', prevSlide);
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', nextSlide);
-        }
-    }
-    
-    // Инициализация слайдера
-    function init() {
-        initDotsAndHandlers();
-        updateButtons(); // Обновляем начальное состояние кнопок
-        console.log('Слайдер инициализирован, найдено слайдов:', phoneScreenshots.length);
-    }
-    
-    // Запускаем инициализацию после полной загрузки DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-}
+<script>
+// ===============================
+// 0) PHONE NAVIGATION (если есть)
+// ===============================
+(function initPhoneNavigation(){
+  const screenshots = document.querySelectorAll('.phone-screenshot');
+  const prevBtn = document.getElementById('phoneNavPrev');
+  const nextBtn = document.getElementById('phoneNavNext');
+  const dotsContainer = document.getElementById('phoneDots');
+  if (!screenshots.length) return;
 
-// Вызов функции
-initPhoneNavigation();
-// CALCULATOR WITH SHIFTS
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('StripUp Shifts Calculator initialized');
-    
-    // Получаем все элементы калькулятора
-    const shiftsSlider = document.getElementById('shiftsWeek');
-    const incomeSlider = document.getElementById('incomePerShift');
-    const tariffSelect = document.getElementById('tariffSelect');
-    
-    const shiftsValue = document.getElementById('shiftsWeekValue');
-    const incomeValue = document.getElementById('incomePerShiftValue');
-    
-    const resultPerShift = document.getElementById('resultPerShift');
-    const resultPerWeek = document.getElementById('resultPerWeek');
-    const resultPerMonth = document.getElementById('resultPerMonth');
-    
-    // Проверяем что все элементы найдены
-    if (!shiftsSlider || !incomeSlider) {
-        console.log('Calculator elements not found - page without calculator');
-        return;
-    }
-    
-    console.log('All calculator elements found');
-    
-    // Функция форматирования чисел
-    function formatNumber(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    }
-    
-    // Функция обновления значений ползунков
-    function updateSliderValues() {
-        if (shiftsValue) shiftsValue.textContent = shiftsSlider.value + ' смен';
-        if (incomeValue) incomeValue.textContent = formatNumber(incomeSlider.value) + ' ₽';
-    }
-    
-    // Функция расчета дохода
-    function calculateIncome() {
-        const shiftsPerWeek = parseInt(shiftsSlider.value);
-        const incomePerShift = parseInt(incomeSlider.value);
-        const tariff = parseFloat(tariffSelect.value);
-        
-        console.log('Calculating income:', { shiftsPerWeek, incomePerShift, tariff });
-        
-        // Расчет доходов
-        const shiftIncome = incomePerShift * (1 - tariff);
-        const weeklyIncome = shiftIncome * shiftsPerWeek;
-        const monthlyIncome = weeklyIncome * 4;
-        
-        // Обновление результатов
-        if (resultPerShift) resultPerShift.textContent = formatNumber(Math.round(shiftIncome)) + ' ₽';
-        if (resultPerWeek) resultPerWeek.textContent = formatNumber(Math.round(weeklyIncome)) + ' ₽';
-        if (resultPerMonth) resultPerMonth.textContent = formatNumber(Math.round(monthlyIncome)) + ' ₽';
-    }
-    
-    // Назначаем обработчики событий
-    shiftsSlider.addEventListener('input', function() {
-        updateSliderValues();
-        calculateIncome();
+  let i = 0;
+  function goTo(n){
+    screenshots.forEach(s=>s.classList.remove('active'));
+    i = (n + screenshots.length) % screenshots.length;
+    screenshots[i].classList.add('active');
+    updateDots(); updateBtns();
+  }
+  function updateBtns(){
+    if (prevBtn) prevBtn.disabled = false;
+    if (nextBtn) nextBtn.disabled = false;
+  }
+  function updateDots(){
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
+    screenshots.forEach((_, idx)=>{
+      const d = document.createElement('div');
+      d.className = 'phone-dot' + (idx===i ? ' active':'');
+      d.addEventListener('click', ()=>goTo(idx));
+      dotsContainer.appendChild(d);
     });
-    
-    incomeSlider.addEventListener('input', function() {
-        updateSliderValues();
-        calculateIncome();
+  }
+  prevBtn && prevBtn.addEventListener('click', ()=>goTo(i-1));
+  nextBtn && nextBtn.addEventListener('click', ()=>goTo(i+1));
+  goTo(0);
+})();
+
+// ===============================
+// 1) FAQ (под твою разметку .faq-q/.faq-a)
+// ===============================
+(function initFAQ(){
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    q.addEventListener('click', ()=>{
+      item.classList.toggle('active');
     });
-    
-    tariffSelect.addEventListener('change', function() {
-        calculateIncome();
-    });
-    
-    // Инициализация при загрузке
-    updateSliderValues();
-    calculateIncome();
-    
-    console.log('Shifts calculator setup complete');
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // === FAQ ===
-  const faqItems = document.querySelectorAll(".faq-item");
-
-  faqItems.forEach(item => {
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer");
-
-    if (question && answer) {
-      question.addEventListener("click", () => {
-        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
-
-        // Закрываем все ответы (если нужно только одно открыто)
-        faqItems.forEach(i => {
-          const a = i.querySelector(".faq-answer");
-          if (a) a.style.maxHeight = null;
-        });
-
-        // Открываем выбранный
-        if (!isOpen) {
-          answer.style.maxHeight = answer.scrollHeight + "px";
-        }
-      });
-    }
   });
+})();
 
-  // === Ползунки калькулятора ===
-  const sliders = document.querySelectorAll("input[type='range']");
+// ===============================
+// 2) КАЛЬКУЛЯТОР (ЕДИНСТВЕННЫЙ)
+// Разметка: name="shifts" | "tariff" | "period", сумма в #calcSum
+// ===============================
+(function initCalc(){
+  const root = document.getElementById('calc');
+  if (!root) return;
+  const sumEl = root.querySelector('#calcSum');
+  if (!sumEl) return;
 
-  sliders.forEach(slider => {
-    const outputSelector = slider.dataset.output; // можно в HTML указать data-output="#id"
-    const output = outputSelector ? document.querySelector(outputSelector) : null;
+  const shiftsInputs = root.querySelectorAll('input[name="shifts"]');
+  const tariffInputs = root.querySelectorAll('input[name="tariff"]');
+  const periodInputs = root.querySelectorAll('input[name="period"]');
 
-    const updateValue = () => {
-      if (output) output.textContent = slider.value;
-    };
+  // Модель: подставь свою среднюю ГРОСС-выручку за смену
+  const GROSS_PER_SHIFT = 10000; // руб.
+  const WEEKS_IN_MONTH = 4.3;
+  const WEEKS_IN_YEAR  = 52;
 
-    slider.addEventListener("input", updateValue);
-    updateValue(); // начальное значение
-  });
-});
+  const nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
+  const getChecked = (nodes, fb) => {
+    for (const n of nodes) if (n.checked) return n.value;
+    return fb;
+  };
 
-  // === Ползунки калькулятора ===
-  const sliders = document.querySelectorAll("input[type='range']");
-
-  sliders.forEach(slider => {
-    const outputSelector = slider.dataset.output; // можно в HTML указать data-output="#id"
-    const output = outputSelector ? document.querySelector(outputSelector) : null;
-
-    const updateValue = () => {
-      if (output) output.textContent = slider.value;
-    };
-
-    slider.addEventListener("input", updateValue);
-    updateValue(); // начальное значение
-  });
-});
-// КАЛЬКУЛЯТОР С ВЫБОРОМ СМЕН
-function initCalculator() {
-    console.log('Инициализация калькулятора со сменами...');
-    
-    const shiftButtons = document.querySelectorAll('.shift-option');
-    const tariffSelect = document.getElementById('tariffSelect');
-    
-    const resultPerShift = document.getElementById('resultPerShift');
-    const resultPerWeek = document.getElementById('resultPerWeek');
-    const resultPerMonth = document.getElementById('resultPerMonth');
-    
-    if (shiftButtons.length === 0) return;
-    
-    function formatNumber(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    }
-    
-    function calculateIncome() {
-        const activeShiftBtn = document.querySelector('.shift-option.active');
-        const shiftsPerWeek = parseInt(activeShiftBtn.dataset.shifts);
-        const incomePerShift = 7000; // Фиксированные 7000 ₽, но не показываем пользователю
-        const tariff = parseFloat(tariffSelect.value);
-        
-        const shiftIncome = incomePerShift * (1 - tariff);
-        const weeklyIncome = shiftIncome * shiftsPerWeek;
-        const monthlyIncome = weeklyIncome * 4;
-        
-        if (resultPerShift) resultPerShift.textContent = formatNumber(Math.round(shiftIncome)) + ' ₽';
-        if (resultPerWeek) resultPerWeek.textContent = formatNumber(Math.round(weeklyIncome)) + ' ₽';
-        if (resultPerMonth) resultPerMonth.textContent = formatNumber(Math.round(monthlyIncome)) + ' ₽';
-    }
-    
-    shiftButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            shiftButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            calculateIncome();
-        });
-    });
-    
-    tariffSelect.addEventListener('change', calculateIncome);
-    calculateIncome();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    initCalculator();
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const shiftsRadios = document.querySelectorAll('input[name="shifts"]');
-  const periodRadios = document.querySelectorAll('input[name="period"]');
-  const calcSum = document.getElementById("calcSum");
-
-  function calculate() {
-    let shifts = parseInt(document.querySelector('input[name="shifts"]:checked').value);
-    let period = document.querySelector('input[name="period"]:checked').value;
-
-    // Базовый доход за одну смену (можно менять под себя)
-    let perShift = 7500;
-
-    let total = 0;
-    if (period === "week") total = shifts * perShift;
-    if (period === "month") total = shifts * perShift * 4;
-    if (period === "year") total = shifts * perShift * 48;
-
-    calcSum.textContent = total.toLocaleString("ru-RU") + " руб.";
+  let current = 0, raf;
+  function animateTo(target, ms=450){
+    cancelAnimationFrame(raf);
+    const start = performance.now(), from = current;
+    (function frame(t){
+      const p = Math.min(1, (t-start)/ms);
+      const e = 1 - Math.pow(1-p, 3);
+      const val = Math.round(from + (target-from)*e);
+      sumEl.textContent = nf.format(val) + ' руб.';
+      if (p<1) raf = requestAnimationFrame(frame); else current = target;
+    })(start);
   }
 
-  shiftsRadios.forEach(r => r.addEventListener("change", calculate));
-  periodRadios.forEach(r => r.addEventListener("change", calculate));
+  function recalc(animate=true){
+    const shifts = Number(getChecked(shiftsInputs, 5));     // 4/5/6
+    const share  = Number(getChecked(tariffInputs, 0.7));   // 0.8/0.7/0.6
+    const per    =        getChecked(periodInputs, 'month'); // week/month/year
 
-  calculate(); // запуск при загрузке
-});
+    const weeks  = per === 'year' ? WEEKS_IN_YEAR : (per === 'week' ? 1 : WEEKS_IN_MONTH);
+    const gross  = shifts * weeks * GROSS_PER_SHIFT;
+    const net    = Math.max(0, Math.round(gross * share));
+
+    if (animate) animateTo(net); else { current = net; sumEl.textContent = nf.format(net) + ' руб.'; }
+  }
+
+  // Слушатели
+  [...shiftsInputs, ...tariffInputs, ...periodInputs].forEach(i=>{
+    i.addEventListener('change', ()=>recalc(true));
+    const lbl = i.closest('label.calc-option');
+    if (lbl) lbl.addEventListener('click', ()=>setTimeout(()=>recalc(true),0));
+  });
+
+  recalc(false);
+})();
+</script>
