@@ -2255,3 +2255,37 @@ header.is-scrolled .header-inner {
 
 /* Блокируем прокрутку при открытом меню */
 body.mnav-lock { overflow: hidden; }
+/* === MOBILE: полностью скрыть шапку и всё связанное === */
+@media (max-width: 768px){
+  /* сама шапка */
+  header,
+  header .header-inner{
+    display: none !important;
+  }
+
+  /* если подключали наш простой мобильный бар/бургер */
+  .su-mbar,
+  .mnav-burger{
+    display: none !important;
+  }
+
+  /* гарантированно прячем любые выезжающие меню/бэкдропы */
+  .mnav-drawer, .mnav-backdrop,
+  .su-drawer,  .su-backdrop{
+    display: none !important;
+    transform: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* на всякий случай убираем возможные компенсации под липкую шапку */
+  body, main, .hero{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* якоря без дополнительного отступа сверху */
+  :target{
+    scroll-margin-top: 0 !important;
+  }
+}
